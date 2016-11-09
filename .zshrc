@@ -1,5 +1,11 @@
 # Path to your oh-my-zsh installation.
-export ZSH=/Users/Stephen/.oh-my-zsh
+#Conditional path based on OS
+system_type=$(uname -s)
+if [ "$system_type" = "Linux" ]; then
+  export ZSH=/home/stephen/.oh-my-zsh
+else
+  export ZSH=/Users/Stephen/.oh-my-zsh
+fi
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -85,6 +91,10 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias py="python3"
+##Conditional alias based on current OS
+#system_type=$(uname -s)
+#if ["$system_type" = "Linux" ]; then
+#  alias cfg='/usr/bin/git --git-dir
 alias cfg='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 
 #Autojump stuff
