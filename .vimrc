@@ -169,6 +169,8 @@ vmap a; :Tabularize /::<CR>
 vmap a- :Tabularize /-><CR>
 
 "------------------------------------------------------------
+"Solarized
+call togglebg#map("<F5>")
 "set background=dark
 "colorscheme solarized
 "let g:Tex_CompileRule_pdf
