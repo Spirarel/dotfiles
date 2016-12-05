@@ -17,11 +17,14 @@ Plugin 'Lokaltog/vim-easymotion'
 
 Plugin 'terryma/vim-multiple-cursors'
 
-Plugin 'vim-latex/vim-latex'
+"Plugin 'vim-latex/vim-latex'
+Plugin 'lervag/vimtex'
 
 Plugin 'scrooloose/syntastic'
 
 Plugin 'godlygeek/tabular'
+
+Plugin 'Valloric/YouCompleteMe'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -167,6 +170,7 @@ let g:haskell_tabular = 1
 vmap a= :Tabularize /=<CR>
 vmap a; :Tabularize /::<CR>
 vmap a- :Tabularize /-><CR>
+vmap a# :Tabularize /#<CR>
 
 "------------------------------------------------------------
 "Solarized
@@ -184,6 +188,6 @@ set statusline+=%*
 
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_open = 0 "restore to 1 when/if ready to use Syntastic
 let g:syntastic_check_on_wq = 0
 let g:syntastic_haskell_checkers = ['hlint', 'ghc_mod']
