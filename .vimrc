@@ -24,7 +24,11 @@ Plugin 'scrooloose/syntastic'
 
 Plugin 'godlygeek/tabular'
 
+Plugin 'tpope/vim-surround'
+
 Plugin 'Valloric/YouCompleteMe'
+
+Plugin 'crusoexia/vim-monokai'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -152,7 +156,8 @@ map Y y$
 nnoremap <C-L> :nohl<CR><C-L>
 "
 "Escape using escape
-inoremap jj <ESC>
+inoremap fd <ESC>
+vnoremap fd <ESC>
 "Toggle spell check on and off
 nmap <silent> <leader>s :set spell!<CR>
 "Spell check language is English(US)
@@ -173,11 +178,13 @@ vmap a- :Tabularize /-><CR>
 vmap a# :Tabularize /#<CR>
 
 "------------------------------------------------------------
+"Themes
 "Solarized
 call togglebg#map("<F5>")
 "set background=dark
 "colorscheme solarized
 "let g:Tex_CompileRule_pdf
+colorscheme monokai
 "
 "------------------------------------------------------------
 "Syntastic
