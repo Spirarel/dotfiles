@@ -1,14 +1,13 @@
 "vimrc of Stephen Gates
 
 "--------------------------- TODO list ---------------------------
-" YCM
-" Snipmate? some useful LaTeX system
+" Make tab work for both YCM and UltiSnips
 " insert mode mappings, like to get some more Mac/Emacs bindings
 " <leader>Tab is open as is m<tab> and <leader><leader>!!!
 " Open gui item in terminal vim instance
-" Airline
 " Fix coloration of easy-motion hints
 " Make my own theme like solorized, but for f.lux computers with Easy-motion(weekend project)
+" Airline theme & Git integration
 
 "--------------------------- Package manager ---------------------------
 
@@ -30,9 +29,10 @@ Plugin 'lervag/vimtex'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'crusoexia/vim-monokai'
 Plugin 'mhinz/vim-startify'
+Plugin 'vim-airline/vim-airline'
 
-"Plugin 'Valloric/YouCompleteMe'
-"Plugin 'vim-airline/vim-airline'
+Plugin 'Valloric/YouCompleteMe'
+Plugin 'SirVer/ultisnips'
 
 call vundle#end()         " required
 filetype plugin indent on " required
@@ -67,6 +67,9 @@ set number
 set confirm     " Save prompt
 set cmdheight=2 " Set the command window height to 2 lines
 set mouse=a     " Enable use of the mouse for all modes
+set laststatus=2
+
+let g:is_posix=1
 
 "--------------------------- Mappings ---------------------------
 
@@ -82,9 +85,9 @@ map <leader>fed :e $MYVIMRC<cr>
 map Y y$
 
 "incsearch
+let g:incsearch#auto_nohlsearch = 1
 map /  <Plug>(incsearch-forward)
 map ?  <Plug>(incsearch-backward)
-let g:incsearch#auto_nohlsearch = 1
 map n  <Plug>(incsearch-nohl-n)
 map N  <Plug>(incsearch-nohl-N)
 map *  <Plug>(incsearch-nohl-*)
@@ -126,16 +129,14 @@ nmap <C-h> <C-W>h
 nmap <C-j> <C-W>j
 nmap <C-k> <C-W>k
 nmap <C-l> <C-W>l
+nmap <C-x>      :wincmd q<CR>
 
 nmap <leader>wh :vert sbn<CR>
 nmap <leader>wj :below sbn<CR>:wincmd j<CR>
 nmap <leader>wk :sbn<CR>
 nmap <leader>wl :vert belowright sbn<CR>
-nmap <C-d>      :wincmd q<CR>
 
 "--------------- Adopted from tpope/vim-unimpaired ------------------
-
-
 
 function! s:BlankUp(count) abort
   put!=repeat(nr2char(10), a:count)
@@ -163,38 +164,34 @@ set background=dark
 "colorscheme solarized
 colorscheme monokai
 
-"------------------------------------------------------------
-"Syntastic
+"--------------------------- Plugin options ---------------------------
 
-"set statusline+=%#warningmsg#
-"set statusline+=%{SyntasticStatuslineFlag()}
-"set statusline+=%*
-"
-"let g:syntastic_always_populate_loc_list = 1
-"let g:syntastic_auto_loc_list = 1
-"let g:syntastic_check_on_open = 0 "restore to 1 when/if ready to use Syntastic
-"let g:syntastic_check_on_wq = 0
-"let g:syntastic_haskell_checkers = ['hlint', 'ghc_mod']
+let g:ycm_python_binary_path = '/usr/local/bin/python3'
 
-"""""" Tab completion
-"""""" will insert tab at beginning of line, will use completion if not at beginning
-"""""set wildmode=list:longest,list:full
-"""""function! InsertTabWrapper()
-"""""      let col = col('.') - 1
-"""""      if !col || getline('.')[col - 1] !~ '\k'
-"""""        return "\<tab>"
-"""""      else
-"""""        return "\<c-p>"
-"""""      endif
-"""""endfunction
-"""""inoremap <Tab> <c-r>=InsertTabWrapper()<cr>
-"""""inoremap <S-Tab> <c-n>
-"""""
-"""""" . scan the current buffer, b scan other loaded buffers that are in the  buffer list, u scan the unloaded buffers that are in the buffer list, w scan buffers from other windows, t tag completion
-"""""set complete=.,b,u,w,t,]
-"""""
-"""""" Keyword list  NOT IMPLEMENTED YET
-"""""set complete+=k~/.vim/keywords.txt
+let g:UltiSnipsExpandTrigger="<C-j>"
+let g:UltiSnipsJumpForwardTrigger="<C-j>"
+let g:UltiSnipsJumpBackwardTrigger="<C-k>"
+let g:UltiSnipsSnippetsDir = "~/.vim/bundle/ultisnips/UltiSnips"
+map <leader>Ue :UltiSnipsEdit<cr>
+
+"""function! g:UltiSnips_Complete()
+"""    call UltiSnips_ExpandSnippet()
+"""    if g:ulti_expand_res == 0
+"""        if pumvisible()
+"""            return "\<C-n>"
+"""        else
+"""            call UltiSnips_JumpForwards()
+"""            if g:ulti_jump_forwards_res == 0
+"""               return "\<TAB>"
+"""            endif
+"""        endif
+"""    endif
+"""    return ""
+"""  endfunction
+"""
+"""au BufEnter * exec "inoremap <silent> " . g:UltiSnipsExpandTrigger . " <C-R>=g:UltiSnips_Complete()<cr>"
+"""
+"""let g:UltiSnipsJumpForwardTrigger="<tab>"
 
 "Source .vimrc on write
 augroup reload_vimrc
