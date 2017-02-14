@@ -1,14 +1,14 @@
 "vimrc of Stephen Gates
 
 "--------------------------- TODO list ---------------------------
-"include a shortcut to insert space in normal mode
-"Insert newline above and below cursor in nm a la unimpaired
-"easily switch buffers, switch  windows & generate new splits
-"Open gui item in terminal vim instance
-"airline
-"Fix coloration of easy-motion hints
-"Make my own theme like solorized, but for f.lux computers with
-"easy-motion(weekend project)
+" YCM
+" Snipmate? some useful LaTeX system
+" insert mode mappings, like to get some more Mac/Emacs bindings
+" <leader>Tab is open as is m<tab> and <leader><leader>!!!
+" Open gui item in terminal vim instance
+" Airline
+" Fix coloration of easy-motion hints
+" Make my own theme like solorized, but for f.lux computers with Easy-motion(weekend project)
 
 "--------------------------- Package manager ---------------------------
 
@@ -29,12 +29,14 @@ Plugin 'sjl/gundo.vim'
 Plugin 'lervag/vimtex'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'crusoexia/vim-monokai'
+Plugin 'mhinz/vim-startify'
+
 "Plugin 'Valloric/YouCompleteMe'
 "Plugin 'vim-airline/vim-airline'
 
-call vundle#end()            " required
-filetype plugin indent on    " required
-filetype indent plugin on "try to identity a file for auto-indenting and plugins
+call vundle#end()         " required
+filetype plugin indent on " required
+filetype indent plugin on " try to identity a file for auto-indenting and plugins
 syntax on
 
 "Search
@@ -52,13 +54,13 @@ set tabstop=2    " size of a hard tabstop
 set expandtab    " Insert spaces instead of tab characters when tab is pressed
 set shiftwidth=4 " All indentation levels use 'shiftwidth' number of characters
 set shiftwidth=2 " size of an 'indent'
+set autoindent "When no filetype-specific indenting, maintain indentation level
 
 " Modelines have historically been a source of security vulnerabilities. As
 " such, it may be a good idea to disable them and use the securemodelines
 " script, <http://www.vim.org/scripts/script.php?script_id=1876>.
 set nomodeline
 set backspace=indent,eol,start " Allow custom backspace movement
-set autoindent "When no filetype-specific indenting, maintain indentation level
 
 set ruler       " Display cursos position on last line or in status
 set number
@@ -115,6 +117,43 @@ nnoremap <leader>u :GundoToggle<CR>
 "Multiple-cursors THESE WILL NOT WORK UNTIL THE PACKAGE IS UPDATED
 "let g:multi_cursor_quit_key='fd'
 "let g:multi_cursor_insert_maps = {'f':1}
+
+" Easily switch buffers, switch windows & generate new splits
+nmap [b :bp<CR>
+nmap ]b :bn<CR>
+
+nmap <C-h> <C-W>h
+nmap <C-j> <C-W>j
+nmap <C-k> <C-W>k
+nmap <C-l> <C-W>l
+
+nmap <leader>wh :vert sbn<CR>
+nmap <leader>wj :below sbn<CR>:wincmd j<CR>
+nmap <leader>wk :sbn<CR>
+nmap <leader>wl :vert belowright sbn<CR>
+nmap <C-d>      :wincmd q<CR>
+
+"--------------- Adopted from tpope/vim-unimpaired ------------------
+
+
+
+function! s:BlankUp(count) abort
+  put!=repeat(nr2char(10), a:count)
+  ']+1
+  silent! call repeat#set("\<Plug>BlankUp", a:count)
+endfunction
+
+function! s:BlankDown(count) abort
+  put =repeat(nr2char(10), a:count)
+  '[-1
+  silent! call repeat#set("\<Plug>BlankDown", a:count)
+endfunction
+
+nnoremap <silent> <Plug>BlankUp   :<C-U>call <SID>BlankUp(v:count1)<CR>
+nnoremap <silent> <Plug>BlankDown :<C-U>call <SID>BlankDown(v:count1)<CR>
+
+nmap [<Space> <Plug>BlankUp
+nmap ]<Space> <Plug>BlankDown
 
 "--------------------------- Themes ---------------------------
 
