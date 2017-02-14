@@ -1,7 +1,8 @@
 "vimrc of Stephen Gates
 
 "--------------------------- TODO list ---------------------------
-" Make tab work for both YCM and UltiSnips
+"1. Find a better mapping for expandUltiSnips
+
 " insert mode mappings, like to get some more Mac/Emacs bindings
 " <leader>Tab is open as is m<tab> and <leader><leader>!!!
 " Open gui item in terminal vim instance
@@ -81,6 +82,7 @@ let mapleader = "\<space>"
 
 "Temporary mapping to edit .vimrc
 map <leader>fed :e $MYVIMRC<cr>
+map <leader>bh :Startify<cr>
 " map y to act like d and c, i.e. to yank until EOL
 map Y y$
 
@@ -169,29 +171,29 @@ colorscheme monokai
 let g:ycm_python_binary_path = '/usr/local/bin/python3'
 
 let g:UltiSnipsExpandTrigger="<C-j>"
-let g:UltiSnipsJumpForwardTrigger="<C-j>"
+let g:UltiSnipsJumpForwardTrigger="<CR>"
 let g:UltiSnipsJumpBackwardTrigger="<C-k>"
 let g:UltiSnipsSnippetsDir = "~/.vim/bundle/ultisnips/UltiSnips"
 map <leader>Ue :UltiSnipsEdit<cr>
 
 """function! g:UltiSnips_Complete()
-"""    call UltiSnips_ExpandSnippet()
+"""    call UltiSnips#ExpandSnippet()
 """    if g:ulti_expand_res == 0
 """        if pumvisible()
 """            return "\<C-n>"
 """        else
-"""            call UltiSnips_JumpForwards()
+"""            call UltiSnips#JumpForwards()
 """            if g:ulti_jump_forwards_res == 0
 """               return "\<TAB>"
 """            endif
 """        endif
 """    endif
 """    return ""
-"""  endfunction
+"""endfunction
 """
 """au BufEnter * exec "inoremap <silent> " . g:UltiSnipsExpandTrigger . " <C-R>=g:UltiSnips_Complete()<cr>"
-"""
-"""let g:UltiSnipsJumpForwardTrigger="<tab>"
+"""let g:UltiSnipsExpandTrigger="<C-j>"
+"""let g:UltiSnipsJumpForwardTrigger="<C-j>"
 
 "Source .vimrc on write
 augroup reload_vimrc
