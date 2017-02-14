@@ -1,11 +1,16 @@
 "vimrc of Stephen Gates
 
-"todo
+"--------------------------- TODO list ---------------------------
 "include a shortcut to insert space in normal mode
+"Insert newline above and below cursor in nm a la unimpaired
+"easily switch buffers, switch  windows & generate new splits
+"Open gui item in terminal vim instance
 "airline
 "Fix coloration of easy-motion hints
+"Make my own theme like solorized, but for f.lux computers with
+"easy-motion(weekend project)
 
-"--- Package manager ---
+"--------------------------- Package manager ---------------------------
 
 set nocompatible
 filetype off "Required off for vundle initialization
@@ -33,8 +38,8 @@ filetype indent plugin on "try to identity a file for auto-indenting and plugins
 syntax on
 
 "Search
-set hlsearch  " highlight searches
-set incsearch " show incremental results while typing
+set hlsearch   " highlight searches
+set incsearch  " show incremental results while typing
 set ignorecase " Use case insensitive search, except when using capital letters
 set smartcase
 
