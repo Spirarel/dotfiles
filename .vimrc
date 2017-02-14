@@ -48,6 +48,7 @@ set smartcase
 
 set hidden
 set undofile
+set undodir=~/.vim/undo
 set wildmenu
 set showcmd " Show partial commands in the last line of the screen
 
