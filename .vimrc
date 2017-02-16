@@ -9,6 +9,8 @@
 " Fix coloration of easy-motion hints
 " Make my own theme like solorized, but for f.lux computers with Easy-motion(weekend project)
 " Airline theme & Git integration
+" Get themes to work properly in VIM
+" Change themes with a mapping
 
 "--------------------------- Package manager ---------------------------
 
@@ -27,17 +29,19 @@ Plugin 'tpope/vim-commentary'
 Plugin 'haya14busa/incsearch.vim'
 Plugin 'sjl/gundo.vim'
 Plugin 'lervag/vimtex'
-Plugin 'altercation/vim-colors-solarized'
-Plugin 'crusoexia/vim-monokai'
 Plugin 'mhinz/vim-startify'
 Plugin 'vim-airline/vim-airline'
-
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'SirVer/ultisnips'
+
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'crusoexia/vim-monokai'
 
 call vundle#end()         " required
 filetype plugin indent on " required
 filetype indent plugin on " try to identity a file for auto-indenting and plugins
+
+"--------------------------- Standard settings ---------------------------
 syntax on
 
 "Search
@@ -114,6 +118,7 @@ vmap a=   :Tabularize /=<CR>
 vmap a;   :Tabularize /::<CR>
 vmap a-   :Tabularize /-><CR>
 vmap a#   :Tabularize /#<CR>
+vmap a"   :Tabularize /"<CR>
 vmap <CR> :Tabularize /
 
 "Gundo
@@ -161,7 +166,6 @@ nmap ]<Space> <Plug>BlankDown
 
 "--------------------------- Themes ---------------------------
 
-let g:solarized_termcolors=256
 call togglebg#map("<F5>")
 set background=dark
 "colorscheme solarized
@@ -176,6 +180,20 @@ let g:UltiSnipsJumpForwardTrigger="<CR>"
 let g:UltiSnipsJumpBackwardTrigger="<C-k>"
 let g:UltiSnipsSnippetsDir = "~/.vim/bundle/ultisnips/UltiSnips"
 map <leader>Ue :UltiSnipsEdit<cr>
+
+"--------------------------- Autocommands ---------------------------
+
+"Source .vimrc on write
+augroup reload_vimrc
+  autocmd!
+    autocmd BufWritePost $MYVIMRC source $MYVIMRC
+augroup END
+
+"Save folds
+au BufWinLeave ?* mkview
+au BufWinEnter ?* silent loadview
+
+"--------------------------- Testing ---------------------------
 
 """function! g:UltiSnips_Complete()
 """    call UltiSnips#ExpandSnippet()
@@ -195,9 +213,3 @@ map <leader>Ue :UltiSnipsEdit<cr>
 """au BufEnter * exec "inoremap <silent> " . g:UltiSnipsExpandTrigger . " <C-R>=g:UltiSnips_Complete()<cr>"
 """let g:UltiSnipsExpandTrigger="<C-j>"
 """let g:UltiSnipsJumpForwardTrigger="<C-j>"
-
-"Source .vimrc on write
-augroup reload_vimrc
-  autocmd!
-    autocmd BufWritePost $MYVIMRC source $MYVIMRC
-augroup END
