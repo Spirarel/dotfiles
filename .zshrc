@@ -92,6 +92,7 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias py="python3"
 alias l="ls -A"
+alias nv="nvim"
 ##Conditional alias based on current OS
 #system_type=$(uname -s)
 #if ["$system_type" = "Linux" ]; then

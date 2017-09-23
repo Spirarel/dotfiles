@@ -1,8 +1,8 @@
-"vimrc of Stephen Gates
-
+"neovim config of Stephen Gates
+"
 "--------------------------- TODO list ---------------------------
-"1. Find a better mapping for expandUltiSnips
-
+" Auto-resource init.vim
+" Find a better mapping for expandUltiSnips
 " insert mode mappings, like to get some more Mac/Emacs bindings
 " <leader>Tab is open as is m<tab> and <leader><leader>!!!
 " Open gui item in terminal vim instance
@@ -14,35 +14,25 @@
 
 "--------------------------- Package manager ---------------------------
 
-set nocompatible
-filetype off "Required off for vundle initialization
+call plug#begin()
 
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+Plug 'gmarik/Vundle.vim' " let Vundle manage Vundle, required
+Plug 'Lokaltog/vim-easymotion'
+"Plug 'terryma/vim-multiple-cursors'
+Plug 'godlygeek/tabular'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-commentary'
+Plug 'haya14busa/incsearch.vim'
+Plug 'sjl/gundo.vim'
+"Plug 'lervag/vimtex'
+"Plug 'mhinz/vim-startify'
+"Plug 'vim-airline/vim-airline'
+"Plug 'Valloric/YouCompleteMe'
+Plug 'SirVer/ultisnips'
 
-Plugin 'gmarik/Vundle.vim' " let Vundle manage Vundle, required
-Plugin 'Lokaltog/vim-easymotion'
-Plugin 'terryma/vim-multiple-cursors'
-Plugin 'godlygeek/tabular'
-Plugin 'tpope/vim-surround'
-Plugin 'tpope/vim-commentary'
-Plugin 'haya14busa/incsearch.vim'
-Plugin 'sjl/gundo.vim'
-Plugin 'lervag/vimtex'
-Plugin 'mhinz/vim-startify'
-Plugin 'vim-airline/vim-airline'
-"Plugin 'Valloric/YouCompleteMe'
-Plugin 'SirVer/ultisnips'
-
-Plugin 'altercation/vim-colors-solarized'
-Plugin 'crusoexia/vim-monokai'
-
-call vundle#end()         " required
-filetype plugin indent on " required
-filetype indent plugin on " try to identity a file for auto-indenting and plugins
+call plug#end()
 
 "--------------------------- Standard settings ---------------------------
-syntax on
 
 "Search
 set hlsearch   " highlight searches
@@ -52,28 +42,20 @@ set smartcase
 
 set hidden
 set undofile
-set undodir=~/.vim/undo
-set wildmenu
-set showcmd " Show partial commands in the last line of the screen
 
 set tabstop=2    " size of a hard tabstop
 set expandtab    " Insert spaces instead of tab characters when tab is pressed
-set shiftwidth=4 " All indentation levels use 'shiftwidth' number of characters
 set shiftwidth=2 " size of an 'indent'
-set autoindent "When no filetype-specific indenting, maintain indentation level
 
 " Modelines have historically been a source of security vulnerabilities. As
 " such, it may be a good idea to disable them and use the securemodelines
 " script, <http://www.vim.org/scripts/script.php?script_id=1876>.
 set nomodeline
-set backspace=indent,eol,start " Allow custom backspace movement
 
-set ruler       " Display cursos position on last line or in status
 set number
 set confirm     " Save prompt
 set cmdheight=2 " Set the command window height to 2 lines
 set mouse=a     " Enable use of the mouse for all modes
-set laststatus=2
 
 let g:is_posix=1
 
@@ -87,7 +69,6 @@ let mapleader = "\<space>"
 
 "Temporary mapping to edit .vimrc
 map <leader>fed :e $MYVIMRC<cr>
-map <leader>bh :Startify<cr>
 " map y to act like d and c, i.e. to yank until EOL
 map Y y$
 
@@ -166,10 +147,8 @@ nmap ]<Space> <Plug>BlankDown
 
 "--------------------------- Themes ---------------------------
 
-call togglebg#map("<F5>")
-set background=dark
-"colorscheme solarized
-"colorscheme monokai
+"set background=dark
+"set termguicolors
 
 "--------------------------- Plugin options ---------------------------
 
@@ -179,7 +158,7 @@ let g:ycm_autoclose_preview_window_after_completion=1
 let g:UltiSnipsExpandTrigger="<C-j>"
 let g:UltiSnipsJumpForwardTrigger="<CR>"
 let g:UltiSnipsJumpBackwardTrigger="<C-k>"
-let g:UltiSnipsSnippetsDir = "~/.vim/bundle/ultisnips/UltiSnips"
+"let g:UltiSnipsSnippetsDir = "~/.vim/bundle/ultisnips/UltiSnips"
 map <leader>Ue :UltiSnipsEdit<cr>
 
 "--------------------------- Autocommands ---------------------------
@@ -191,8 +170,8 @@ augroup reload_vimrc
 augroup END
 
 "Save folds
-au BufWinLeave ?* mkview
-au BufWinEnter ?* silent loadview
+" au BufWinLeave ?* mkview
+" au BufWinEnter ?* silent loadview
 
 "--------------------------- Testing ---------------------------
 
