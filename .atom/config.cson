@@ -1,0 +1,42 @@
+"*":
+  "atom-latex":
+    bibtex: "biblatex"
+    build_after_save: false
+    preview_after_build: "Do nothing"
+  "autocomplete-plus": {}
+  core:
+    packagesWithKeymapsDisabled: [
+      "atom-latex"
+      "bracket-matcher"
+    ]
+    telemetryConsent: "limited"
+    themes: [
+      "atom-dark-ui"
+      "atom-dark-syntax"
+    ]
+  "cursor-history":
+    excludeClosedBuffer: true
+  editor:
+    fontSize: 12
+    preferredLineLength: 80
+    scrollPastEnd: true
+    scrollSensitivity: 50
+    softWrap: true
+    softWrapAtPreferredLineLength: true
+  "exception-reporting":
+    userId: "5a5fb2f3-717a-4143-b65d-4cd1cc964f84"
+  latex:
+    opener: "preview"
+  "pdf-view":
+    fitToWidthOnOpen: true
+    reverseSyncBehaviour: "Double click"
+  "status-bar": {}
+  tabs:
+    addNewTabsAtEnd: true
+    alwaysShowTabBar: false
+    enableVcsColoring: true
+  "vim-mode-plus":
+    keymapCCToChangeInnerSmartWord: true
+    keymapYToYankToLastCharacterOfLine: true
+  welcome:
+    showOnStartup: false

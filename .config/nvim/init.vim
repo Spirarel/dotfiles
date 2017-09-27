@@ -16,17 +16,15 @@
 
 call plug#begin()
 
-Plug 'gmarik/Vundle.vim' " let Vundle manage Vundle, required
 Plug 'Lokaltog/vim-easymotion'
-"Plug 'terryma/vim-multiple-cursors'
+Plug 'terryma/vim-multiple-cursors'
 Plug 'godlygeek/tabular'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
 Plug 'haya14busa/incsearch.vim'
-Plug 'sjl/gundo.vim'
+Plug 'simnalamburt/vim-mundo' 
 "Plug 'lervag/vimtex'
-"Plug 'mhinz/vim-startify'
-"Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline'
 "Plug 'Valloric/YouCompleteMe'
 Plug 'SirVer/ultisnips'
 
@@ -62,8 +60,11 @@ let g:is_posix=1
 "--------------------------- Mappings ---------------------------
 
 "Return to normal mode
-inoremap fd <ESC>
-vnoremap fd <ESC>
+" inoremap fd <ESC>
+" vnoremap fd <ESC>
+
+imap fd <ESC>
+vmap fd <ESC>
 
 let mapleader = "\<space>"
 
@@ -103,8 +104,8 @@ vmap a"   :Tabularize /"<CR>
 vmap <CR> :Tabularize /
 
 "Gundo
-let g:gundo_prefer_python3 = 1
-nnoremap <leader>u :GundoToggle<CR>
+let g:mundo_prefer_python3 = 1
+nnoremap <leader>u :MundoToggle<CR>
 
 "Multiple-cursors THESE WILL NOT WORK UNTIL THE PACKAGE IS UPDATED
 "let g:multi_cursor_quit_key='fd'
@@ -124,6 +125,9 @@ nmap <leader>wh :vert sbn<CR>
 nmap <leader>wj :below sbn<CR>:wincmd j<CR>
 nmap <leader>wk :sbn<CR>
 nmap <leader>wl :vert belowright sbn<CR>
+
+" Terminal mode mapping
+:tnoremap fd <C-\><C-n>
 
 "--------------- Adopted from tpope/vim-unimpaired ------------------
 
@@ -158,7 +162,7 @@ let g:ycm_autoclose_preview_window_after_completion=1
 let g:UltiSnipsExpandTrigger="<C-j>"
 let g:UltiSnipsJumpForwardTrigger="<CR>"
 let g:UltiSnipsJumpBackwardTrigger="<C-k>"
-"let g:UltiSnipsSnippetsDir = "~/.vim/bundle/ultisnips/UltiSnips"
+let g:UltiSnipsSnippetsDir = "~/.config/nvim/plugged/ultisnips/snippets"
 map <leader>Ue :UltiSnipsEdit<cr>
 
 "--------------------------- Autocommands ---------------------------
@@ -166,7 +170,7 @@ map <leader>Ue :UltiSnipsEdit<cr>
 "Source .vimrc on write
 augroup reload_vimrc
   autocmd!
-    autocmd BufWritePost $MYVIMRC source $MYVIMRC
+    autocmd BufWritePost $MYVIMRC source $MYVIMRC | echom "Reloaded " . $MYVIMRC
 augroup END
 
 "Save folds
