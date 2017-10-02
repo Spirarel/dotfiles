@@ -39,12 +39,11 @@
   'f d': 'vim-mode-plus:reset-normal-mode'
 
 'atom-text-editor.vim-mode-plus:not(.insert-mode)':
-  'b ]': 'vim-mode-plus:next-tab'
-  'b [': 'vim-mode-plus:previous-tab'
+  'space ]': 'vim-mode-plus:next-tab'
+  'space [': 'vim-mode-plus:previous-tab'
 
-# 'atom-text-editor[data-grammar="text tex latex"]':
-#   'ctrl-cmd-b': 'atom-latex:build'
-
-'atom-text-editor[data-grammar~=\"latex\"]': {
+'atom-text-editor[data-grammar~=\"latex\"]':
     "ctrl-cmd-b": "latex:build",
-  }
+
+'atom-text-editor.vim-mode-plus.visual-mode':
+    'a a': 'atom-alignment:apply-close'
