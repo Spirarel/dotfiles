@@ -19,17 +19,27 @@
     bibtex: "biblatex"
     build_after_save: false
     preview_after_build: "Do nothing"
-  "autocomplete-plus": {}
+  "autocomplete-plus":
+    confirmCompletion: "enter"
+    fileBlacklist: [
+      "*.txt"
+      "*.md"
+    ]
   core:
+    disabledPackages: [
+      "tabularize"
+      "atom-alignment"
+    ]
     packagesWithKeymapsDisabled: [
       "atom-latex"
       "bracket-matcher"
       "atom-alignment"
+      "align-by"
     ]
     telemetryConsent: "limited"
     themes: [
-      "atom-light-ui"
-      "one-light-syntax"
+      "one-light-ui"
+      "solarized-light-syntax"
     ]
   "cursor-history":
     excludeClosedBuffer: true
@@ -55,7 +65,6 @@
   "tree-view":
     hideVcsIgnoredFiles: true
   "vim-mode-plus":
-    keymapCCToChangeInnerSmartWord: true
     keymapYToYankToLastCharacterOfLine: true
     sequentialPaste: true
   welcome:

@@ -41,9 +41,19 @@
 'atom-text-editor.vim-mode-plus:not(.insert-mode)':
   'space ]': 'vim-mode-plus:next-tab'
   'space [': 'vim-mode-plus:previous-tab'
+  'g =': 'vim-mode-plus:align-occurrence'
+
+# TESTING ground
+  'g r': 'vim-mode-plus:rotate'
+  'g d': 'vim-mode-plus:duplicate-with-comment-out-original'
+
 
 'atom-text-editor[data-grammar~=\"latex\"]':
     "ctrl-cmd-b": "latex:build",
 
-'atom-text-editor.vim-mode-plus.visual-mode':
-    'a a': 'atom-alignment:apply-close'
+# 'atom-text-editor.vim-mode-plus.visual-mode':
+#     'a a': 'atom-alignment:apply-close'
+
+'atom-text-editor.autocomplete-active':
+  'tab': 'core:move-down'
+  'shift-tab': 'core:move-up'

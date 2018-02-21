@@ -27,6 +27,8 @@ Plug 'simnalamburt/vim-mundo'
 Plug 'vim-airline/vim-airline'
 "Plug 'Valloric/YouCompleteMe'
 Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
+Plug 'junegunn/goyo.vim'
 
 call plug#end()
 
@@ -54,6 +56,9 @@ set number
 set confirm     " Save prompt
 set cmdheight=2 " Set the command window height to 2 lines
 set mouse=a     " Enable use of the mouse for all modes
+
+" Wrap settings
+set wrap lbr
 
 let g:is_posix=1
 
@@ -129,6 +134,9 @@ nmap <leader>wl :vert belowright sbn<CR>
 " Terminal mode mapping
 :tnoremap fd <C-\><C-n>
 
+" Goyo ("Distraction-free mode")
+nmap <leader><CR> :Goyo<CR>
+
 "--------------- Adopted from tpope/vim-unimpaired ------------------
 
 function! s:BlankUp(count) abort
@@ -176,6 +184,28 @@ augroup END
 "Save folds
 " au BufWinLeave ?* mkview
 " au BufWinEnter ?* silent loadview
+
+"Make :q quit in Goyo
+function! s:goyo_enter()
+  let b:quitting = 0
+  let b:quitting_bang = 0
+  autocmd QuitPre <buffer> let b:quitting = 1
+  cabbrev <buffer> q! let b:quitting_bang = 1 <bar> q!
+endfunction
+
+function! s:goyo_leave()
+  " Quit Vim if this is the only remaining buffer
+  if b:quitting && len(filter(range(1, bufnr('$')), 'buflisted(v:val)')) == 1
+    if b:quitting_bang
+      qa!
+    else
+      qa
+    endif
+  endif
+endfunction
+
+autocmd! User GoyoEnter call <SID>goyo_enter()
+autocmd! User GoyoLeave call <SID>goyo_leave()
 
 "--------------------------- Testing ---------------------------
 
