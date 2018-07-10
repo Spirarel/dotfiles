@@ -35,13 +35,21 @@
   'ctrl-i': 'cursor-history:next'
   'ctrl-o': 'cursor-history:prev'
 
+# 'atom-workspace:not([mini])':
+
 'atom-text-editor.vim-mode-plus':
-  'f d': 'vim-mode-plus:reset-normal-mode'
+  'f d'    : 'vim-mode-plus:reset-normal-mode'
+  'ctrl-c' : 'hydrogen:interrupt-kernel'
+  # 'ctrl-j': 'atom-keyboard-macros.user:{Add cell}'
 
 'atom-text-editor.vim-mode-plus:not(.insert-mode)':
   'space ]': 'vim-mode-plus:next-tab'
   'space [': 'vim-mode-plus:previous-tab'
   'g =': 'vim-mode-plus:align-occurrence'
+  'space enter': 'vim-mode-plus:maximize-pane'
+  'cmd-enter': 'hydrogen:run-cell'
+  'g v d' : 'git-diff-details:toggle-git-diff-details'
+  'space T n': 'theme-switch:prev'
 
 # TESTING ground
   'g r': 'vim-mode-plus:rotate'
@@ -57,3 +65,6 @@
 'atom-text-editor.autocomplete-active':
   'tab': 'core:move-down'
   'shift-tab': 'core:move-up'
+
+# 'atom-text-editor:not(.mini).vim-mode-plus:not(.insert-mode):not(.jumpy-jump-mode), .tree-view':
+#   'm': 'jumpy:toggle'

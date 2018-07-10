@@ -39,3 +39,8 @@
   'Delim {}':
     prefix: '\\{'
     body: '\\\\left{${1:body}\\\\right}'
+
+'.cpp.h.hpp.c':
+  'Line #':
+    prefix: 'LINE'
+    body: 'std::cout << __LINE__ << endl;'
