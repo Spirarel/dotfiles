@@ -15,6 +15,9 @@
       ":"
       "|"
     ]
+  "atom-beautify":
+    general:
+      _analyticsUserId: "d4b06cfe-30de-4466-99aa-46927f617fa9"
   "atom-latex":
     bibtex: "biblatex"
     build_after_save: false
@@ -25,21 +28,24 @@
       "*.txt"
       "*.md"
     ]
+  "autocomplete-python":
+    useKite: false
   core:
     disabledPackages: [
-      "atom-alignment"
-      "ide-haskell"
-      "ide-haskell-cabal"
-      "tabularize"
-      "markdown-preview"
+      "autocomplete-python"
     ]
     packagesWithKeymapsDisabled: [
       "atom-latex"
       "bracket-matcher"
       "atom-alignment"
       "align-by"
+      "atom-beautify"
     ]
     telemetryConsent: "limited"
+    themes: [
+      "one-light-ui"
+      "one-light-syntax"
+    ]
   "cursor-history":
     excludeClosedBuffer: true
   editor:
@@ -55,8 +61,7 @@
     showIconsInEditorGutter: true
   jumpy:
     useHomingBeaconEffectOnJumps: false
-  latex:
-    opener: "preview"
+  latex: {}
   "markdown-preview":
     breakOnSingleNewline: true
   "markdown-preview-plus":
@@ -89,6 +94,9 @@
     useSmartcaseForSearch: true
   welcome:
     showOnStartup: false
-".python.source":
+".python.regexp.source":
   editor:
     tabLength: 2
+".python.source":
+  editor:
+    autoIndent: true

@@ -35,36 +35,41 @@
   'ctrl-i': 'cursor-history:next'
   'ctrl-o': 'cursor-history:prev'
 
-# 'atom-workspace:not([mini])':
-
 'atom-text-editor.vim-mode-plus':
   'f d'    : 'vim-mode-plus:reset-normal-mode'
   'ctrl-c' : 'hydrogen:interrupt-kernel'
-  # 'ctrl-j': 'atom-keyboard-macros.user:{Add cell}'
 
 'atom-text-editor.vim-mode-plus:not(.insert-mode)':
-  'space ]': 'vim-mode-plus:next-tab'
-  'space [': 'vim-mode-plus:previous-tab'
-  'g =': 'vim-mode-plus:align-occurrence'
-  'space enter': 'vim-mode-plus:maximize-pane'
-  'cmd-enter': 'hydrogen:run-cell'
-  'g v d' : 'git-diff-details:toggle-git-diff-details'
-  'space T n': 'theme-switch:prev'
+  'space ]'     : 'vim-mode-plus:next-tab'
+  'space ['     : 'vim-mode-plus:previous-tab'
+  'g ='         : 'vim-mode-plus:align-occurrence'
+  'space enter' : 'vim-mode-plus:maximize-pane'
+  'cmd-enter'   : 'hydrogen:run-cell'
+  'g v d'       : 'git-diff-details:toggle-git-diff-details'
+  'space T n'   : 'theme-switch:prev'
+  'ctrl-h'      : 'window:focus-pane-on-left'
+  'ctrl-j'      : 'window:focus-pane-below'
+  'ctrl-k'      : 'window:focus-pane-above'
+  'ctrl-l'      : 'window:focus-pane-on-right'
+  'space b'     : 'atom-beautify:beautify-editor'
 
 # TESTING ground
   'g r': 'vim-mode-plus:rotate'
   'g d': 'vim-mode-plus:duplicate-with-comment-out-original'
 
+'.github-Panel':
+  'cmd-enter': 'github:commit'
 
 'atom-text-editor[data-grammar~=\"latex\"]':
     "ctrl-cmd-b": "latex:build",
 
-# 'atom-text-editor.vim-mode-plus.visual-mode':
-#     'a a': 'atom-alignment:apply-close'
+'atom-text-editor.vim-mode-plus.visual-mode':
+    # 'a a': 'atom-alignment:apply-close'
+    'enter': 'align-regexp:align-selection'
 
 'atom-text-editor.autocomplete-active':
-  'tab': 'core:move-down'
-  'shift-tab': 'core:move-up'
+  'tab'       : 'core:move-down'
+  'shift-tab' : 'core:move-up'
 
 # 'atom-text-editor:not(.mini).vim-mode-plus:not(.insert-mode):not(.jumpy-jump-mode), .tree-view':
 #   'm': 'jumpy:toggle'

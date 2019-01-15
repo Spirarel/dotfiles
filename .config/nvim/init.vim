@@ -1,13 +1,12 @@
 "neovim config of Stephen Gates
 "
 "--------------------------- TODO list ---------------------------
-" Auto-resource init.vim
+" Auto-resource init.vim -- This is done? 2018-08-13
 " Find a better mapping for expandUltiSnips
 " insert mode mappings, like to get some more Mac/Emacs bindings
 " <leader>Tab is open as is m<tab> and <leader><leader>!!!
 " Open gui item in terminal vim instance
 " Fix coloration of easy-motion hints
-" Make my own theme like solorized, but for f.lux computers with Easy-motion(weekend project)
 " Airline theme & Git integration
 " Get themes to work properly in VIM
 " Change themes with a mapping
@@ -24,11 +23,15 @@ Plug 'tpope/vim-commentary'
 Plug 'haya14busa/incsearch.vim'
 Plug 'simnalamburt/vim-mundo' 
 "Plug 'lervag/vimtex'
-Plug 'vim-airline/vim-airline'
-"Plug 'Valloric/YouCompleteMe'
+" Plug 'vim-airline/vim-airline'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'junegunn/goyo.vim'
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' } "Newcomer TODO evaluate
+Plug 'joshdick/onedark.vim'
+Plug 'sheerun/vim-polyglot'
+Plug 'w0rp/ale' "Newcomer TODO evaluate
+Plug 'NLKNguyen/papercolor-theme'
 
 call plug#end()
 
@@ -65,9 +68,6 @@ let g:is_posix=1
 "--------------------------- Mappings ---------------------------
 
 "Return to normal mode
-" inoremap fd <ESC>
-" vnoremap fd <ESC>
-
 imap fd <ESC>
 vmap fd <ESC>
 
@@ -77,6 +77,9 @@ let mapleader = "\<space>"
 map <leader>fed :e $MYVIMRC<cr>
 " map y to act like d and c, i.e. to yank until EOL
 map Y y$
+
+" Avoid duplicate functionality/make behave like atom
+nmap cc ciw
 
 "incsearch
 let g:incsearch#auto_nohlsearch = 1
@@ -157,10 +160,14 @@ nnoremap <silent> <Plug>BlankDown :<C-U>call <SID>BlankDown(v:count1)<CR>
 nmap [<Space> <Plug>BlankUp
 nmap ]<Space> <Plug>BlankDown
 
+" nmap <leader>Tn ':set background=<C-R>=&background == "dark" ? "light" : "dark"<CR><CR>'
+
 "--------------------------- Themes ---------------------------
 
-"set background=dark
-"set termguicolors
+colorscheme PaperColor
+set background=dark
+
+
 
 "--------------------------- Plugin options ---------------------------
 
@@ -172,6 +179,11 @@ let g:UltiSnipsJumpForwardTrigger="<CR>"
 let g:UltiSnipsJumpBackwardTrigger="<C-k>"
 let g:UltiSnipsSnippetsDir = "~/.config/nvim/plugged/ultisnips/snippets"
 map <leader>Ue :UltiSnipsEdit<cr>
+
+let g:deoplete#enable_at_startup = 1
+inoremap <silent><expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
+inoremap <silent><expr><s-tab> pumvisible() ? "\<c-p>" : "\<s-tab>"
+
 
 "--------------------------- Autocommands ---------------------------
 
