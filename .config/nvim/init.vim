@@ -219,6 +219,9 @@ endfunction
 autocmd! User GoyoEnter call <SID>goyo_enter()
 autocmd! User GoyoLeave call <SID>goyo_leave()
 
+"Start terminal in insert mode
+autocmd BufEnter term://* startinsert
+
 "--------------------------- Testing ---------------------------
 
 """function! g:UltiSnips_Complete()

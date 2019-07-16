@@ -70,11 +70,11 @@ source $ZSH/oh-my-zsh.sh
 # export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
+if [[ -n $SSH_CONNECTION ]]; then
+  export EDITOR='vim'
+else
+  export EDITOR='nvim'
+fi
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
@@ -93,6 +93,10 @@ source $ZSH/oh-my-zsh.sh
 alias py="python3"
 alias l="ls -A"
 alias nv="nvim"
+alias ghci="stack exec -- ghci"
+alias lg="ls | grep"
+alias mute="sh ~/code/scripts/SpoMutify.sh > /dev/null 2>&1 &"
+alias anki="nv ~/code/practice/anki.py"
 ##Conditional alias based on current OS
 #system_type=$(uname -s)
 #if ["$system_type" = "Linux" ]; then
@@ -102,3 +106,7 @@ alias cfg='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 #Autojump stuff
 #[[ -s $(brew --prefix)/etc/profile.d/autojump.sh ]] && . $(brew --prefix)/etc/profile.d/autojump.sh
 autoload -U compinit && compinit
+#
+# Needed for virtualenv
+# export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python3
+# source /usr/local/bin/virtualenvwrapper.sh
