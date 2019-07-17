@@ -1,11 +1,6 @@
 # Path to your oh-my-zsh installation.
 #Conditional path based on OS
-system_type=$(uname -s)
-if [ "$system_type" = "Linux" ]; then
-  export ZSH=/home/stephen/.oh-my-zsh
-else
-  export ZSH=/Users/Stephen/.oh-my-zsh
-fi
+export ZSH="/Users/z00448c/.oh-my-zsh"
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
