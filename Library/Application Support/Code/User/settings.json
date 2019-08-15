@@ -18,19 +18,15 @@
         "before": ["f", "d"],
         "after": ["<Esc>"]
       },
-      {
-        "before": ["<Enter>"],
-        "commands": ["align.by.regex"]
-      },
-      // { //Broken for whatever reason...
-      //   "before": ["a","="],
-      //   "commands": [
-      //     {
-      //       "command":"align.by.regex",
-      //       "args":["=","<Enter>"]
-      //     }
-      //   ]
+      // {
+      //   "before": ["<Enter>"],
+      //   "commands": ["align.by.regex"]
       // },
+      {
+        "before"  : ["a", "a"],
+        "commands": ["wwm.aligncode"],
+        "when"    : "editorTextFocus && !editorReadonly"
+      }
     ],
     "vim.visualModeKeyBindingsNonRecursive": [
       {
@@ -50,6 +46,11 @@
       {
         "before": ["<leader>","<enter>"],
         "commands": ["workbench.action.toggleZenMode"]
+      },
+      {
+        "before"   : ["<leader>","a"],
+        "commands" : ["wwm.aligncode"],
+        "when"     : "editorTextFocus && !editorReadonly"
       },
     ],
     "vim.leader": "<space>",
@@ -74,7 +75,9 @@
         "snippet":true,
       }
     },
-    "spellright.language": [],
+    "spellright.language": [
+      "en"
+    ],
     "spellright.documentTypes": [
       "latex"
     ],
@@ -89,5 +92,11 @@
       "*.js": "javascriptreact"
     },
     "editor.minimap.enabled": true,
-    "workbench.colorTheme": "Horizon Bright Bold"
+    "workbench.colorTheme": "Horizon Bright Bold",
+    "alignment.surroundSpace": {
+      "colon"      : [ 1, 1 ],
+      "assignment" : [ 1, 1 ],
+      "arrow"      : [ 1, 1 ],
+      "comment"    : 2
+    }
   }
