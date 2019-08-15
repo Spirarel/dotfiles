@@ -79,4 +79,15 @@
       "latex"
     ],
     "keyboard.dispatch": "keyCode",
+    "emmet.includeLanguages": {
+      "javascript": "javascriptreact"
+    },
+    "editor.suggestSelection": "first",
+    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+    "workbench.sideBar.location": "left",
+    "files.associations": {
+      "*.js": "javascriptreact"
+    },
+    "editor.minimap.enabled": true,
+    "workbench.colorTheme": "Horizon Bright Bold"
   }
