@@ -33,6 +33,7 @@
   core:
     disabledPackages: [
       "autocomplete-python"
+      "markdown-preview"
     ]
     packagesWithKeymapsDisabled: [
       "atom-latex"
@@ -42,10 +43,6 @@
       "atom-beautify"
     ]
     telemetryConsent: "limited"
-    themes: [
-      "one-light-ui"
-      "one-light-syntax"
-    ]
   "cursor-history":
     excludeClosedBuffer: true
   editor:

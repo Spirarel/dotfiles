@@ -18,10 +18,10 @@
         "before": ["f", "d"],
         "after": ["<Esc>"]
       },
-      // {
-      //   "before": ["<Enter>"],
-      //   "commands": ["align.by.regex"]
-      // },
+      {
+        "before": ["<Enter>"],
+        "commands": ["align.by.regex"]
+      },
       {
         "before"  : ["a", "a"],
         "commands": ["wwm.aligncode"],
@@ -42,6 +42,14 @@
       {
         "before": ["Y"],
         "after": ["y","$"]
+      },
+      {
+        "before": ["<leader>","w","j"],
+        "commands": ["workbench.action.splitEditorDown"]
+      },
+      {
+        "before": ["<leader>","w","l"],
+        "commands": ["workbench.action.splitEditorRight"]
       },
       {
         "before": ["<leader>","<enter>"],
@@ -92,11 +100,14 @@
       "*.js": "javascriptreact"
     },
     "editor.minimap.enabled": true,
-    "workbench.colorTheme": "Horizon Bright Bold",
     "alignment.surroundSpace": {
       "colon"      : [ 1, 1 ],
       "assignment" : [ 1, 1 ],
       "arrow"      : [ 1, 1 ],
       "comment"    : 2
-    }
+    },
+    "diffEditor.renderSideBySide": true,
+    "[javascriptreact]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
   }
