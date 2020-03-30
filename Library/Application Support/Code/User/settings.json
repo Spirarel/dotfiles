@@ -1,91 +1,119 @@
 {
-    "workbench.activityBar.visible": false,
-    // "vim.easymotion": true,
-    "vim.surround": true,
-    "vim.sneak": true,
-    "vim.incsearch": true,
-    "vim.useSystemClipboard": true,
-    "vim.useCtrlKeys": true,
-    "vim.hlsearch": true,
-    "vim.insertModeKeyBindings": [
+    "workbench.activityBar.visible" : false,
+    "vim.easymotion": true,
+    "vim.surround"              : true,
+    // "vim.sneak"                 : true,
+    "vim.incsearch"             : true,
+    "vim.useSystemClipboard"    : true,
+    "vim.useCtrlKeys"           : true,
+    "vim.hlsearch"              : true,
+    "vim.insertModeKeyBindings" : [
       {
-        "before": ["f", "d"],
-        "after": ["<Esc>"]
+        "before" : ["f", "d"],
+        "after"  : ["<Esc>"]
       }
     ],
     "vim.visualModeKeyBindings": [
       {
-        "before": ["f", "d"],
-        "after": ["<Esc>"]
+        "before" : ["f", "d"],
+        "after"  : ["<Esc>"]
       },
-      // {
-      //   "before": ["<Enter>"],
-      //   "commands": ["align.by.regex"]
-      // },
       {
-        "before"  : ["a", "a"],
-        "commands": ["wwm.aligncode"],
-        "when"    : "editorTextFocus && !editorReadonly"
-      }
+        "before": ["<Enter>"],
+        "commands": ["align.by.regex"]
+      },
+      {
+        "before"   : ["a", "a"],
+        "commands" : ["wwm.aligncode"],
+        "when"     : "editorTextFocus && !editorReadonly"
+      },
+      {
+        "before" : ["m"],
+        "after"  : ["<leader>","<leader>","<leader>","b","d","w"],
+        "when"   : "editorTextFocus && !editorReadonly"
+      },
+      {
+        "before" : ["'"],
+        "after"  : ["S","'"],
+        "when"   : "editorTextFocus && !editorReadonly"
+      },
+      {
+        "before" : ["\""],
+        "after"  : ["S","\""],
+        "when"   : "editorTextFocus && !editorReadonly"
+      },
     ],
     "vim.visualModeKeyBindingsNonRecursive": [
       {
-        "before": [">"],
-        "commands": ["editor.action.indentLines"]
+        "before"   : [">"],
+        "commands" : ["editor.action.indentLines"]
       },
       {
-        "before": ["<"],
-        "commands": ["editor.action.outdentLines"]
+        "before"   : ["<"],
+        "commands" : ["editor.action.outdentLines"]
       },
     ],
     "vim.normalModeKeyBindings": [
       {
-        "before": ["Y"],
-        "after": ["y","$"]
+        "before" : ["Y"],
+        "after"  : ["y","$"]
       },
       {
-        "before": ["<leader>","<enter>"],
-        "commands": ["workbench.action.toggleZenMode"]
+        "before"   : ["<leader>","<enter>"],
+        "commands" : ["workbench.action.toggleZenMode"]
       },
       {
         "before"   : ["<leader>","a"],
         "commands" : ["wwm.aligncode"],
         "when"     : "editorTextFocus && !editorReadonly"
       },
+      {
+        "before" : ["m"],
+        "after"  : ["<leader>","<leader>","<leader>","b","d","w"],
+        "when"   : "editorTextFocus && !editorReadonly"
+      }
     ],
-    "vim.leader": "<space>",
-    "vim.handleKeys": {
-      "<C-a>": false,
-      "<C-f>": false
+    "vim.leader"     : "<space>",
+    "vim.handleKeys" : {
+      "<C-a>" : false,
+      "<C-f>" : false
     },
-    "terminal.integrated.shell.osx": "/bin/zsh",
-    "python.venvPath": "~/.virtualenvs",
-    "[html]": {
-      "editor.tabSize": 2,
+    "terminal.integrated.shell.osx" : "/bin/zsh",
+    "python.venvPath"               : "~/.virtualenvs",
+    "[html]"                        : {
+      "editor.tabSize" : 2,
       // "editor.detectIndentation": false,
     },
     "window.zoomLevel": 0,
-    "markdown-preview-enhanced.previewTheme": "atom-dark.css",
-    "editor.tabCompletion": "on",
-    "zenMode.fullScreen": false,
-    "breadcrumbs.enabled": false,
-    "[plaintext]": {
+    "editor.tabCompletion"                   : "on",
+    "zenMode.fullScreen"                     : false,
+    "breadcrumbs.enabled"                    : false,
+    "[plaintext]"                            : {
       "editor.suggest.filteredTypes": {
-        "text": false,
-        "snippet":true,
+        "text"    : false,
+        "snippet" : true,
       }
     },
     "spellright.language": [
       "en"
     ],
     "spellright.documentTypes": [
-      "latex"
+      "latex",
+      "markdown"
     ],
-    "keyboard.dispatch": "keyCode",
-    "alignment.surroundSpace": {
+    "keyboard.dispatch"       : "keyCode",
+    "alignment.surroundSpace" : {
       "colon"      : [ 1, 1 ],
       "assignment" : [ 1, 1 ],
       "arrow"      : [ 1, 1 ],
       "comment"    : 2
-    }
+    },
+    "editor.minimap.enabled": false,
+    "markdown-preview-enhanced.previewTheme": "none.css",
+    "markdown-preview-enhanced.singlePreview": false,
+    "julia.enableTelemetry": false,
+    "markdown.preview.breaks": true,
+    "python.linting.pylintEnabled": true,
+    "python.linting.enabled": true,
+    "python.dataScience.askForKernelRestart": false,
   }

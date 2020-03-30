@@ -32,6 +32,7 @@ Plug 'joshdick/onedark.vim'
 Plug 'sheerun/vim-polyglot'
 Plug 'w0rp/ale' "Newcomer TODO evaluate
 Plug 'NLKNguyen/papercolor-theme'
+" Plug 'haya14busa/vim-metarepeat' "Broken?
 
 call plug#end()
 
@@ -139,6 +140,9 @@ nmap <leader>wl :vert belowright sbn<CR>
 
 " Goyo ("Distraction-free mode")
 nmap <leader><CR> :Goyo<CR>
+
+" Set no wrap
+nmap <leader>nw :set nowrap!<CR>
 
 "--------------- Adopted from tpope/vim-unimpaired ------------------
 
