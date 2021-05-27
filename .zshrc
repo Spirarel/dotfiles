@@ -131,3 +131,7 @@ npm() {
 export JAVA_HOME=`/usr/libexec/java_home -v 1.8`
 export GARDENIA_SERVER=https://gardenia.target.com
 source ~/.secrets
+alias docker-kill='docker ps -aq | xargs docker rm -f'
+export SDKMAN_DIR="/Users/z00448c/.sdkman"
+[[ -s "/Users/z00448c/.sdkman/bin/sdkman-init.sh" ]] && source "/Users/z00448c/.sdkman/bin/sdkman-init.sh"
+alias dr='docker ps -aq | xargs docker rm -f && docker compose up -d'
