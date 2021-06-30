@@ -57,7 +57,7 @@ DISABLE_AUTO_TITLE="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git python wd autojump poetry)
+plugins=(git python wd autojump)
 
 # User configuration
 
@@ -98,6 +98,7 @@ alias lg="ls | grep"
 alias mute="sh ~/code/scripts/SpoMutify.sh > /dev/null 2>&1 &"
 alias anki="nv ~/code/practice/anki.py"
 alias journal="nv ~/Desktop/journal.md"
+alias scott="code Documents/thoughts/on\ books/lessons\ from\ Scott\ circa\ 2020.md"
 ##Conditional alias based on current OS
 #system_type=$(uname -s)
 #if ["$system_type" = "Linux" ]; then
@@ -111,6 +112,8 @@ autoload -U compinit && compinit
 # Needed for virtualenv
 # export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python3
 # source /usr/local/bin/virtualenvwrapper.sh
-if command -v pyenv 1>/dev/null 2>&1; then
-  eval "$(pyenv init -)"
-fi
+# if command -v pyenv 1>/dev/null 2>&1; then
+#   eval "$(pyenv init -)"
+# fi
+
+eval "$(pyenv init -)"

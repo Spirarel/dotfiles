@@ -1,119 +1,296 @@
 {
-    "workbench.activityBar.visible" : false,
-    "vim.easymotion": true,
-    "vim.surround"              : true,
-    // "vim.sneak"                 : true,
-    "vim.incsearch"             : true,
-    "vim.useSystemClipboard"    : true,
-    "vim.useCtrlKeys"           : true,
-    "vim.hlsearch"              : true,
-    "vim.insertModeKeyBindings" : [
-      {
-        "before" : ["f", "d"],
-        "after"  : ["<Esc>"]
-      }
-    ],
-    "vim.visualModeKeyBindings": [
-      {
-        "before" : ["f", "d"],
-        "after"  : ["<Esc>"]
-      },
-      {
-        "before": ["<Enter>"],
-        "commands": ["align.by.regex"]
-      },
-      {
-        "before"   : ["a", "a"],
-        "commands" : ["wwm.aligncode"],
-        "when"     : "editorTextFocus && !editorReadonly"
-      },
-      {
-        "before" : ["m"],
-        "after"  : ["<leader>","<leader>","<leader>","b","d","w"],
-        "when"   : "editorTextFocus && !editorReadonly"
-      },
-      {
-        "before" : ["'"],
-        "after"  : ["S","'"],
-        "when"   : "editorTextFocus && !editorReadonly"
-      },
-      {
-        "before" : ["\""],
-        "after"  : ["S","\""],
-        "when"   : "editorTextFocus && !editorReadonly"
-      },
-    ],
-    "vim.visualModeKeyBindingsNonRecursive": [
-      {
-        "before"   : [">"],
-        "commands" : ["editor.action.indentLines"]
-      },
-      {
-        "before"   : ["<"],
-        "commands" : ["editor.action.outdentLines"]
-      },
-    ],
-    "vim.normalModeKeyBindings": [
-      {
-        "before" : ["Y"],
-        "after"  : ["y","$"]
-      },
-      {
-        "before"   : ["<leader>","<enter>"],
-        "commands" : ["workbench.action.toggleZenMode"]
-      },
-      {
-        "before"   : ["<leader>","a"],
-        "commands" : ["wwm.aligncode"],
-        "when"     : "editorTextFocus && !editorReadonly"
-      },
-      {
-        "before" : ["m"],
-        "after"  : ["<leader>","<leader>","<leader>","b","d","w"],
-        "when"   : "editorTextFocus && !editorReadonly"
-      }
-    ],
-    "vim.leader"     : "<space>",
-    "vim.handleKeys" : {
-      "<C-a>" : false,
-      "<C-f>" : false
+  "vim.easymotion": true,
+  "vim.surround": true,
+  "vim.incsearch": true,
+  "vim.useSystemClipboard": true,
+  "vim.useCtrlKeys": true,
+  "vim.hlsearch": true,
+  "vim.insertModeKeyBindings": [
+    {
+      "before": [
+        "f",
+        "d"
+      ],
+      "after": [
+        "<Esc>"
+      ]
+    }
+  ],
+  "vim.visualModeKeyBindings": [
+    {
+      "before": [
+        "f",
+        "d"
+      ],
+      "after": [
+        "<Esc>"
+      ]
     },
-    "terminal.integrated.shell.osx" : "/bin/zsh",
-    "python.venvPath"               : "~/.virtualenvs",
-    "[html]"                        : {
-      "editor.tabSize" : 2,
-      // "editor.detectIndentation": false,
+    {
+      "before": [
+        "<Enter>"
+      ],
+      "commands": [
+        "align.by.regex"
+      ]
     },
-    "window.zoomLevel": 0,
-    "editor.tabCompletion"                   : "on",
-    "zenMode.fullScreen"                     : false,
-    "breadcrumbs.enabled"                    : false,
-    "[plaintext]"                            : {
-      "editor.suggest.filteredTypes": {
-        "text"    : false,
-        "snippet" : true,
-      }
+    {
+      "before": [
+        "a",
+        "a"
+      ],
+      "commands": [
+        "wwm.aligncode"
+      ],
+      "when": "editorTextFocus && !editorReadonly"
     },
-    "spellright.language": [
-      "en"
+    {
+      "before": [
+        "m",
+        "m"
+      ],
+      "after": [
+        "<leader>",
+        "<leader>",
+        "<leader>",
+        "b",
+        "d",
+        "w"
+      ],
+      "when": "editorTextFocus && !editorReadonly"
+    },
+    {
+      "before": [
+        "m",
+        "j"
+      ],
+      "after": [
+        "<leader>",
+        "<leader>",
+        "<leader>",
+        "b",
+        "d",
+        "j",
+        "k"
+      ],
+      "when": "editorTextFocus && !editorReadonly"
+    },
+    {
+      "before": [
+        "'"
+      ],
+      "after": [
+        "S",
+        "'"
+      ],
+      "when": "editorTextFocus && !editorReadonly"
+    },
+    {
+      "before": [
+        "\""
+      ],
+      "after": [
+        "S",
+        "\""
+      ],
+      "when": "editorTextFocus && !editorReadonly"
+    },
+  ],
+  "vim.visualModeKeyBindingsNonRecursive": [
+    {
+      "before": [
+        ">"
+      ],
+      "commands": [
+        "editor.action.indentLines"
+      ]
+    },
+    {
+      "before": [
+        "<"
+      ],
+      "commands": [
+        "editor.action.outdentLines"
+      ]
+    },
+  ],
+  "vim.normalModeKeyBindings": [
+    {
+      "before": [
+        "Y"
+      ],
+      "after": [
+        "y",
+        "$"
+      ]
+    },
+    {
+      "before": [
+        "c",
+        "c"
+      ],
+      "after": [
+        "c",
+        "i",
+        "w"
+      ]
+    },
+    {
+      "before": [
+        "<leader>",
+        "<enter>"
+      ],
+      "commands": [
+        "workbench.action.toggleZenMode"
+      ]
+    },
+    {
+      "before": [
+        "<leader>",
+        "a"
+      ],
+      "commands": [
+        "wwm.aligncode"
+      ],
+      "when": "editorTextFocus && !editorReadonly"
+    },
+    {
+      "before": [
+        "m",
+        "m"
+      ],
+      "after": [
+        "<leader>",
+        "<leader>",
+        "<leader>",
+        "b",
+        "d",
+        "w"
+      ],
+      "when": "editorTextFocus && !editorReadonly"
+    },
+    {
+      "before": [
+        "m",
+        "j"
+      ],
+      "after": [
+        "<leader>",
+        "<leader>",
+        "<leader>",
+        "b",
+        "d",
+        "j",
+        "k"
+      ],
+      "when": "editorTextFocus && !editorReadonly"
+    },
+  ],
+  "vim.normalModeKeyBindingsNonRecursive": [
+    {
+      "before": [
+        "<C-h>"
+      ],
+      "after": [
+        "<C-w>",
+        "h"
+      ]
+    },
+    {
+      "before": [
+        "<C-j>"
+      ],
+      "after": [
+        "<C-w>",
+        "j"
+      ]
+    },
+    {
+      "before": [
+        "<C-l>"
+      ],
+      "after": [
+        "<C-w>",
+        "l"
+      ]
+    },
+    {
+      "before": [
+        "<C-k>"
+      ],
+      "after": [
+        "<C-w>",
+        "k"
+      ]
+    },
+    // { // Broken
+    //   "before"   : ["<leader>","s","8"],
+    //   "commands" : ["y","s","$","*"]
+    // }, 
+  ],
+  "vim.leader": "<space>",
+  "vim.handleKeys": {
+    "<C-a>": false,
+    "<C-f>": false
+  },
+  "terminal.integrated.shell.osx": "/bin/zsh",
+  "python.venvPath": "~/.virtualenvs",
+  "[html]": {
+    "editor.tabSize": 2,
+    // "editor.detectIndentation": false,
+  },
+  "editor.tabCompletion": "on",
+  "zenMode.fullScreen": false,
+  "breadcrumbs.enabled": false,
+  "keyboard.dispatch": "keyCode",
+  "alignment.surroundSpace": {
+    "colon": [
+      1,
+      1
     ],
-    "spellright.documentTypes": [
-      "latex",
-      "markdown"
+    "assignment": [
+      1,
+      1
     ],
-    "keyboard.dispatch"       : "keyCode",
-    "alignment.surroundSpace" : {
-      "colon"      : [ 1, 1 ],
-      "assignment" : [ 1, 1 ],
-      "arrow"      : [ 1, 1 ],
-      "comment"    : 2
-    },
-    "editor.minimap.enabled": false,
-    "markdown-preview-enhanced.previewTheme": "none.css",
-    "markdown-preview-enhanced.singlePreview": false,
-    "julia.enableTelemetry": false,
-    "markdown.preview.breaks": true,
-    "python.linting.pylintEnabled": true,
-    "python.linting.enabled": true,
-    "python.dataScience.askForKernelRestart": false,
-  }
+    "arrow": [
+      1,
+      1
+    ],
+    "comment": 2
+  },
+  "editor.minimap.enabled": false,
+  "julia.enableTelemetry": false,
+  "markdown.preview.breaks": true,
+  "python.linting.pylintEnabled": true,
+  "python.linting.enabled": true,
+  "vim.highlightedyank.enable": true,
+  // "vim.sneak": true,
+  "vim.sneakReplacesF": true,
+  "vim.sneakUseIgnorecaseAndSmartcase": true,
+  "editor.renderWhitespace": "none",
+  "julia.execution.resultType": "both",
+  "terminal.integrated.commandsToSkipShell": [
+    "language-julia.interrupt"
+  ],
+  "jupyter.askForKernelRestart": false,
+  "jupyter.interactiveWindowMode": "perFile",
+  "workbench.iconTheme": "vscode-icons",
+  "[plain text]": {
+    "editor.quickSuggestions": false
+  },
+  "workbench.editor.untitled.hint": "hidden",
+  "workbench.activityBar.visible": false,
+  "vim.smartRelativeLine": true,
+  "workbench.colorTheme": "Horizon Bright Bold",
+  // "modalkeys.keybindings": {
+  //   "i": "modalkeys.enterInsert",
+  //   /*
+  //    * Move cursor up/down/left/right.
+  //    */
+  //   "::using::cursorMove": {
+  //           "h": { to: 'left', select: '__mode == "visual"', value: '__count' },
+  //           "j": { to: 'down', select: '__mode == "visual"', value: '__count' },
+  //           "k": { to: 'up', select: '__mode == "visual"', value: '__count' },
+  //           "l": { to: 'right', select: '__mode == "visual"', value: '__count' },
+  // }
+}

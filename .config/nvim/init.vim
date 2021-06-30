@@ -1,15 +1,14 @@
 "neovim config of Stephen Gates
 "
 "--------------------------- TODO list ---------------------------
-" Auto-resource init.vim -- This is done? 2018-08-13
 " Find a better mapping for expandUltiSnips
 " insert mode mappings, like to get some more Mac/Emacs bindings
-" <leader>Tab is open as is m<tab> and <leader><leader>!!!
+" <leader>Tab is unmapped as is m<tab> and <leader><leader>!!!
 " Open gui item in terminal vim instance
-" Fix coloration of easy-motion hints
 " Airline theme & Git integration
 " Get themes to work properly in VIM
 " Change themes with a mapping
+" Sneak to replace 'f' and 'F'?
 
 "--------------------------- Package manager ---------------------------
 
@@ -226,6 +225,14 @@ autocmd! User GoyoLeave call <SID>goyo_leave()
 "Start terminal in insert mode
 autocmd BufEnter term://* startinsert
 
+:set number relativenumber
+
+:augroup numbertoggle
+:  autocmd!
+:  autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
+:  autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
+:augroup END
+
 "--------------------------- Testing ---------------------------
 
 """function! g:UltiSnips_Complete()
@@ -246,3 +253,4 @@ autocmd BufEnter term://* startinsert
 """au BufEnter * exec "inoremap <silent> " . g:UltiSnipsExpandTrigger . " <C-R>=g:UltiSnips_Complete()<cr>"
 """let g:UltiSnipsExpandTrigger="<C-j>"
 """let g:UltiSnipsJumpForwardTrigger="<C-j>"
+
