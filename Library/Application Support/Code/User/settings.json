@@ -275,22 +275,17 @@
   "jupyter.askForKernelRestart": false,
   "jupyter.interactiveWindowMode": "perFile",
   "workbench.iconTheme": "vscode-icons",
-  "[plain text]": {
-    "editor.quickSuggestions": false
+  "[plaintext]": {
+    "editor.wordBasedSuggestions": false
   },
   "workbench.editor.untitled.hint": "hidden",
   "workbench.activityBar.visible": false,
-  "vim.smartRelativeLine": true,
-  "workbench.colorTheme": "Horizon Bright Bold",
-  // "modalkeys.keybindings": {
-  //   "i": "modalkeys.enterInsert",
-  //   /*
-  //    * Move cursor up/down/left/right.
-  //    */
-  //   "::using::cursorMove": {
-  //           "h": { to: 'left', select: '__mode == "visual"', value: '__count' },
-  //           "j": { to: 'down', select: '__mode == "visual"', value: '__count' },
-  //           "k": { to: 'up', select: '__mode == "visual"', value: '__count' },
-  //           "l": { to: 'right', select: '__mode == "visual"', value: '__count' },
-  // }
+  "vsicons.dontShowNewVersionMessage": true,
+  "julia.symbolCacheDownload": true,
+  "editor.bracketPairColorization.enabled": true,
+  "notebook.cellToolbarLocation": {
+    "default": "right",
+    "jupyter-notebook": "right"
+  },
+  "workbench.colorTheme": "Horizon"
 }
