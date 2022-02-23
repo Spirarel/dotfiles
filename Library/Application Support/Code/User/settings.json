@@ -1,5 +1,5 @@
 {
-  "vim.easymotion": true,
+  "vim.easymotion": false,
   "vim.surround": true,
   "vim.incsearch": true,
   "vim.useSystemClipboard": true,
@@ -46,37 +46,6 @@
     },
     {
       "before": [
-        "m",
-        "m"
-      ],
-      "after": [
-        "<leader>",
-        "<leader>",
-        "<leader>",
-        "b",
-        "d",
-        "w"
-      ],
-      "when": "editorTextFocus && !editorReadonly"
-    },
-    {
-      "before": [
-        "m",
-        "j"
-      ],
-      "after": [
-        "<leader>",
-        "<leader>",
-        "<leader>",
-        "b",
-        "d",
-        "j",
-        "k"
-      ],
-      "when": "editorTextFocus && !editorReadonly"
-    },
-    {
-      "before": [
         "'"
       ],
       "after": [
@@ -94,6 +63,14 @@
         "\""
       ],
       "when": "editorTextFocus && !editorReadonly"
+    },
+    { // Sneak
+      "before": [ "m" ],
+      "after": [ "s" ]
+    },
+    { // Broken
+      "before": [ "M" ],
+      "after": [ "S" ]
     },
   ],
   "vim.visualModeKeyBindingsNonRecursive": [
@@ -113,6 +90,26 @@
         "editor.action.outdentLines"
       ]
     },
+    {
+      "before": [
+        "f"
+      ],
+      "after": [
+        "s"
+      ]
+    },
+    { // Currently broken
+      "before": [
+        "F"
+      ],
+      "after": [
+        "S"
+      ]
+    },
+    {
+      "before": ["*"],
+      "after": ["S","*"],
+    }
   ],
   "vim.normalModeKeyBindings": [
     {
@@ -156,35 +153,19 @@
     },
     {
       "before": [
-        "m",
-        "m"
+        "<leader>",
+        "f",
+        "e",
+        "d"
       ],
-      "after": [
-        "<leader>",
-        "<leader>",
-        "<leader>",
-        "b",
-        "d",
-        "w"
-      ],
-      "when": "editorTextFocus && !editorReadonly"
+      "commands": [
+        "workbench.action.openSettingsJson"
+      ]
     },
     {
-      "before": [
-        "m",
-        "j"
-      ],
-      "after": [
-        "<leader>",
-        "<leader>",
-        "<leader>",
-        "b",
-        "d",
-        "j",
-        "k"
-      ],
-      "when": "editorTextFocus && !editorReadonly"
-    },
+      "before"   : ["<leader>","s","8"],
+      "after" : ["y","s","i","w","*"]
+    } 
   ],
   "vim.normalModeKeyBindingsNonRecursive": [
     {
@@ -223,39 +204,40 @@
         "k"
       ]
     },
-    // { // Broken
-    //   "before"   : ["<leader>","s","8"],
-    //   "commands" : ["y","s","$","*"]
-    // }, 
+    { // Sneak
+      "before": [ "s" ],
+      "after": [ "c", "l" ]
+    },
+    {
+      "before": [ "S" ],
+      "after": [ "c", "c" ]
+    },
+    {
+      "before": [ "m" ],
+      "after": [ "s" ]
+    },
+    {
+      "before": [ "M" ],
+      "after": [ "S" ]
+    },
   ],
   "vim.leader": "<space>",
   "vim.handleKeys": {
     "<C-a>": false,
     "<C-f>": false
   },
-  "terminal.integrated.shell.osx": "/bin/zsh",
   "python.venvPath": "~/.virtualenvs",
   "[html]": {
     "editor.tabSize": 2,
-    // "editor.detectIndentation": false,
   },
   "editor.tabCompletion": "on",
   "zenMode.fullScreen": false,
   "breadcrumbs.enabled": false,
   "keyboard.dispatch": "keyCode",
   "alignment.surroundSpace": {
-    "colon": [
-      1,
-      1
-    ],
-    "assignment": [
-      1,
-      1
-    ],
-    "arrow": [
-      1,
-      1
-    ],
+    "colon": [ 1, 1 ],
+    "assignment": [ 1, 1 ],
+    "arrow": [ 1, 1 ],
     "comment": 2
   },
   "editor.minimap.enabled": false,
@@ -264,8 +246,8 @@
   "python.linting.pylintEnabled": true,
   "python.linting.enabled": true,
   "vim.highlightedyank.enable": true,
-  // "vim.sneak": true,
-  "vim.sneakReplacesF": true,
+  "vim.sneak": true,
+  "vim.sneakReplacesF": false,
   "vim.sneakUseIgnorecaseAndSmartcase": true,
   "editor.renderWhitespace": "none",
   "julia.execution.resultType": "both",
@@ -287,5 +269,4 @@
     "default": "right",
     "jupyter-notebook": "right"
   },
-  "workbench.colorTheme": "Horizon"
 }

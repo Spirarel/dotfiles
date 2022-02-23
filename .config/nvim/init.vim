@@ -31,6 +31,7 @@ Plug 'joshdick/onedark.vim'
 Plug 'sheerun/vim-polyglot'
 Plug 'w0rp/ale' "Newcomer TODO evaluate
 Plug 'NLKNguyen/papercolor-theme'
+Plug 'justinmk/vim-sneak'
 " Plug 'haya14busa/vim-metarepeat' "Broken?
 
 call plug#end()
@@ -101,6 +102,10 @@ map m <Plug>(easymotion-prefix)
 map mw <Plug>(easymotion-bd-w)
 map mh <Plug>(easymotion-linebackward)
 map ml <Plug>(easymotion-lineforward)
+
+"Sneak
+map f <Plug>Sneak_s
+map F <Plug>Sneak_S
 
 "Tabular
 let g:haskell_tabular = 1
@@ -232,6 +237,8 @@ autocmd BufEnter term://* startinsert
 :  autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
 :  autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
 :augroup END
+
+let g:python3_host_prog='/Users/stephen/.pyenv/shims/python3'
 
 "--------------------------- Testing ---------------------------
 

@@ -99,6 +99,7 @@ alias mute="sh ~/code/scripts/SpoMutify.sh > /dev/null 2>&1 &"
 alias anki="nv ~/code/practice/anki.py"
 alias journal="nv ~/Desktop/journal.md"
 alias scott="code Documents/thoughts/on\ books/lessons\ from\ Scott\ circa\ 2020.md"
+export JULIA_NUM_THREADS="auto"
 ##Conditional alias based on current OS
 #system_type=$(uname -s)
 #if ["$system_type" = "Linux" ]; then
@@ -117,3 +118,4 @@ autoload -U compinit && compinit
 # fi
 
 eval "$(pyenv init -)"
+
