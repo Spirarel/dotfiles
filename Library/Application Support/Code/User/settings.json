@@ -65,12 +65,20 @@
       "when": "editorTextFocus && !editorReadonly"
     },
     { // Sneak
-      "before": [ "m" ],
-      "after": [ "s" ]
+      "before": [
+        "m"
+      ],
+      "after": [
+        "s"
+      ]
     },
     { // Broken
-      "before": [ "M" ],
-      "after": [ "S" ]
+      "before": [
+        "M"
+      ],
+      "after": [
+        "S"
+      ]
     },
   ],
   "vim.visualModeKeyBindingsNonRecursive": [
@@ -107,8 +115,13 @@
       ]
     },
     {
-      "before": ["*"],
-      "after": ["S","*"],
+      "before": [
+        "*"
+      ],
+      "after": [
+        "S",
+        "*"
+      ],
     }
   ],
   "vim.normalModeKeyBindings": [
@@ -163,9 +176,19 @@
       ]
     },
     {
-      "before"   : ["<leader>","s","8"],
-      "after" : ["y","s","i","w","*"]
-    } 
+      "before": [
+        "<leader>",
+        "s",
+        "8"
+      ],
+      "after": [
+        "y",
+        "s",
+        "i",
+        "w",
+        "*"
+      ]
+    }
   ],
   "vim.normalModeKeyBindingsNonRecursive": [
     {
@@ -205,20 +228,38 @@
       ]
     },
     { // Sneak
-      "before": [ "s" ],
-      "after": [ "c", "l" ]
+      "before": [
+        "s"
+      ],
+      "after": [
+        "c",
+        "l"
+      ]
     },
     {
-      "before": [ "S" ],
-      "after": [ "c", "c" ]
+      "before": [
+        "S"
+      ],
+      "after": [
+        "c",
+        "c"
+      ]
     },
     {
-      "before": [ "m" ],
-      "after": [ "s" ]
+      "before": [
+        "m"
+      ],
+      "after": [
+        "s"
+      ]
     },
     {
-      "before": [ "M" ],
-      "after": [ "S" ]
+      "before": [
+        "M"
+      ],
+      "after": [
+        "S"
+      ]
     },
   ],
   "vim.leader": "<space>",
@@ -232,19 +273,27 @@
   },
   "editor.tabCompletion": "on",
   "zenMode.fullScreen": false,
-  "breadcrumbs.enabled": false,
   "keyboard.dispatch": "keyCode",
   "alignment.surroundSpace": {
-    "colon": [ 1, 1 ],
-    "assignment": [ 1, 1 ],
-    "arrow": [ 1, 1 ],
+    "colon": [
+      1,
+      1
+    ],
+    "assignment": [
+      1,
+      1
+    ],
+    "arrow": [
+      1,
+      1
+    ],
     "comment": 2
   },
   "editor.minimap.enabled": false,
   "julia.enableTelemetry": false,
   "markdown.preview.breaks": true,
   "python.linting.pylintEnabled": true,
-  "python.linting.enabled": true,
+  "python.linting.enabled": false,
   "vim.highlightedyank.enable": true,
   "vim.sneak": true,
   "vim.sneakReplacesF": false,
@@ -269,4 +318,21 @@
     "default": "right",
     "jupyter-notebook": "right"
   },
+  "security.workspace.trust.untrustedFiles": "open",
+  "terminal.integrated.enableMultiLinePasteWarning": false,
+  "breadcrumbs.enabled": false,
+  "julia.NumThreads": "auto",
+  "svelte.enable-ts-plugin": true,
+  "svelte.plugin.svelte.note-new-transformation": false,
+  "workbench.colorTheme": "Default Dark+ Experimental",
+  "[python]": {
+    "editor.defaultFormatter": null,
+    "editor.codeActionsOnSave": {
+      "source.fixAll": true
+    },
+    "editor.formatOnType": true
+  },
+  "vscode-neovim.neovimExecutablePaths.darwin": "/usr/local/bin/nvim",
+  "editor.formatOnSave": true,
+  "workbench.editor.enablePreviewFromCodeNavigation": true
 }

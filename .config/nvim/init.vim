@@ -1,6 +1,8 @@
-"neovim config of Stephen Gates
-"
 "--------------------------- TODO list ---------------------------
+" Set up is.vim
+" Figure out visual-multi
+" vscode integration
+"
 " Find a better mapping for expandUltiSnips
 " insert mode mappings, like to get some more Mac/Emacs bindings
 " <leader>Tab is unmapped as is m<tab> and <leader><leader>!!!
@@ -8,38 +10,34 @@
 " Airline theme & Git integration
 " Get themes to work properly in VIM
 " Change themes with a mapping
-" Sneak to replace 'f' and 'F'?
 
 "--------------------------- Package manager ---------------------------
 
 call plug#begin()
 
-Plug 'Lokaltog/vim-easymotion'
-Plug 'terryma/vim-multiple-cursors'
+Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 Plug 'godlygeek/tabular'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
-Plug 'haya14busa/incsearch.vim'
+Plug 'tpope/vim-repeat'
 Plug 'simnalamburt/vim-mundo' 
-"Plug 'lervag/vimtex'
-" Plug 'vim-airline/vim-airline'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'junegunn/goyo.vim'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' } "Newcomer TODO evaluate
-Plug 'joshdick/onedark.vim'
 Plug 'sheerun/vim-polyglot'
-Plug 'w0rp/ale' "Newcomer TODO evaluate
-Plug 'NLKNguyen/papercolor-theme'
-Plug 'justinmk/vim-sneak'
-" Plug 'haya14busa/vim-metarepeat' "Broken?
+Plug 'ggandor/leap.nvim'
+Plug 'ggandor/flit.nvim'
+Plug 'haya14busa/is.vim'
+
+" Plug 'liuchengxu/vim-which-key'
 
 call plug#end()
 
 "--------------------------- Standard settings ---------------------------
 
 "Search
-set hlsearch   " highlight searches
+set nohlsearch "hlsearch   " highlight searches
 set incsearch  " show incremental results while typing
 set ignorecase " Use case insensitive search, except when using capital letters
 set smartcase
@@ -49,7 +47,7 @@ set undofile
 
 set tabstop=2    " size of a hard tabstop
 set expandtab    " Insert spaces instead of tab characters when tab is pressed
-set shiftwidth=2 " size of an 'indent'
+set shiftwidth=4 " size of an 'indent'
 
 " Modelines have historically been a source of security vulnerabilities. As
 " such, it may be a good idea to disable them and use the securemodelines
@@ -74,38 +72,37 @@ vmap fd <ESC>
 
 let mapleader = "\<space>"
 
-"Temporary mapping to edit .vimrc
+"Get to vimrc quickly (from spacemacs)
 map <leader>fed :e $MYVIMRC<cr>
+
 " map y to act like d and c, i.e. to yank until EOL
 map Y y$
 
 " Avoid duplicate functionality/make behave like atom
 nmap cc ciw
 
-"incsearch
-let g:incsearch#auto_nohlsearch = 1
-map /  <Plug>(incsearch-forward)
-map ?  <Plug>(incsearch-backward)
-map n  <Plug>(incsearch-nohl-n)
-map N  <Plug>(incsearch-nohl-N)
-map *  <Plug>(incsearch-nohl-*)
-map #  <Plug>(incsearch-nohl-#)
-map g* <Plug>(incsearch-nohl-g*)
-map g# <Plug>(incsearch-nohl-g#)
-
 "Toggle spell check on and off
 nmap <silent> <leader>s :set spell!<CR>
 set spelllang=en_us "Spell check language is English(US)
 
-"Easymotion
-map m <Plug>(easymotion-prefix)
-map mw <Plug>(easymotion-bd-w)
-map mh <Plug>(easymotion-linebackward)
-map ml <Plug>(easymotion-lineforward)
+"Leap
+lua require('leap')
+lua vim.keymap.set({'n', 'x', 'o'}, 'm', '<Plug>(leap-forward-to)')
+lua vim.keymap.set({'n', 'x', 'o'}, 'M', '<Plug>(leap-backward-to)')
+lua vim.keymap.set({'n', 'x', 'o'}, 'gs', '<Plug>(leap-cross-window)')
 
-"Sneak
-map f <Plug>Sneak_s
-map F <Plug>Sneak_S
+"Flit
+lua <<EOF
+require('flit').setup {
+  keys = { f = 'f', F = 'F', t = 't', T = 'T' },
+  -- A string like "nv", "nvo", "o", etc.
+  labeled_modes = "v",
+  multiline = true,
+  -- Liku `leap`s similar argument (call-specific overrides).
+  -- E.g.: opts = { equivalence_classes = {} }
+  opts = {}
+}
+EOF
 
 "Tabular
 let g:haskell_tabular = 1
@@ -172,8 +169,8 @@ nmap ]<Space> <Plug>BlankDown
 
 "--------------------------- Themes ---------------------------
 
-colorscheme PaperColor
-set background=dark
+" colorscheme PaperColor
+" set background=dark
 
 
 
@@ -201,10 +198,6 @@ augroup reload_vimrc
     autocmd BufWritePost $MYVIMRC source $MYVIMRC | echom "Reloaded " . $MYVIMRC
 augroup END
 
-"Save folds
-" au BufWinLeave ?* mkview
-" au BufWinEnter ?* silent loadview
-
 "Make :q quit in Goyo
 function! s:goyo_enter()
   let b:quitting = 0
@@ -230,34 +223,16 @@ autocmd! User GoyoLeave call <SID>goyo_leave()
 "Start terminal in insert mode
 autocmd BufEnter term://* startinsert
 
-:set number relativenumber
 
-:augroup numbertoggle
-:  autocmd!
-:  autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
-:  autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
-:augroup END
+" :set number relativenumber
+
+" :augroup numbertoggle
+" :  autocmd!
+" :  autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
+" :  autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
+" :augroup END
 
 let g:python3_host_prog='/Users/stephen/.pyenv/shims/python3'
 
 "--------------------------- Testing ---------------------------
-
-"""function! g:UltiSnips_Complete()
-"""    call UltiSnips#ExpandSnippet()
-"""    if g:ulti_expand_res == 0
-"""        if pumvisible()
-"""            return "\<C-n>"
-"""        else
-"""            call UltiSnips#JumpForwards()
-"""            if g:ulti_jump_forwards_res == 0
-"""               return "\<TAB>"
-"""            endif
-"""        endif
-"""    endif
-"""    return ""
-"""endfunction
-"""
-"""au BufEnter * exec "inoremap <silent> " . g:UltiSnipsExpandTrigger . " <C-R>=g:UltiSnips_Complete()<cr>"
-"""let g:UltiSnipsExpandTrigger="<C-j>"
-"""let g:UltiSnipsJumpForwardTrigger="<C-j>"
 

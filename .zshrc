@@ -96,9 +96,17 @@ alias nv="nvim"
 alias ghci="stack exec -- ghci"
 alias lg="ls | grep"
 alias mute="sh ~/code/scripts/SpoMutify.sh > /dev/null 2>&1 &"
-alias anki="nv ~/code/practice/anki.py"
 alias journal="nv ~/Desktop/journal.md"
 alias scott="code Documents/thoughts/on\ books/lessons\ from\ Scott\ circa\ 2020.md"
+alias ds="docker ps -q | xargs docker stop"
+alias bup="
+touch ~/temp_dock
+defaults export com.apple.dock ~/temp_dock
+brew upgrade
+defaults import com.apple.dock ~/temp_dock
+rm ~/temp_dock
+killall Dock"
+
 export JULIA_NUM_THREADS="auto"
 ##Conditional alias based on current OS
 #system_type=$(uname -s)
@@ -118,4 +126,14 @@ autoload -U compinit && compinit
 # fi
 
 eval "$(pyenv init -)"
+alias pluto='julia -e "using Pluto
+if length(ARGS) > 0
+    notebook = ARGS[1]
+    Pluto.run(notebook=joinpath(pwd(), notebook))
+else
+    Pluto.run()
+end"'
 
+# add_fn() {
+#   echo $1() { $2 } >> ~/.zshrc
+# }
