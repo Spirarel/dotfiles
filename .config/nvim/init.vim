@@ -1,43 +1,43 @@
 "--------------------------- TODO list ---------------------------
-" Set up is.vim
-" Figure out visual-multi
-" vscode integration
 "
+" Figure out visual-multi
+" Set up is.vim
 " Find a better mapping for expandUltiSnips
 " insert mode mappings, like to get some more Mac/Emacs bindings
 " <leader>Tab is unmapped as is m<tab> and <leader><leader>!!!
-" Open gui item in terminal vim instance
-" Airline theme & Git integration
-" Get themes to work properly in VIM
-" Change themes with a mapping
-
+"
 "--------------------------- Package manager ---------------------------
+
+" Conditionally, lazy-load plugins
+function! Cond(Cond, ...)
+  let opts = get(a:000, 0, {})
+  return a:Cond ? opts : extend(opts, { 'on': [], 'for': [] })
+endfunction
 
 call plug#begin()
 
-Plug 'mg979/vim-visual-multi', {'branch': 'master'}
+Plug 'mg979/vim-visual-multi', Cond(!exists('g:vscode')) "Newcomer
 Plug 'godlygeek/tabular'
 Plug 'tpope/vim-surround'
-Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-commentary'   , Cond(!exists('g:vscode'))
 Plug 'tpope/vim-repeat'
-Plug 'simnalamburt/vim-mundo' 
-Plug 'SirVer/ultisnips'
-Plug 'honza/vim-snippets'
-Plug 'junegunn/goyo.vim'
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' } "Newcomer TODO evaluate
-Plug 'sheerun/vim-polyglot'
-Plug 'ggandor/leap.nvim'
-Plug 'ggandor/flit.nvim'
-Plug 'haya14busa/is.vim'
+Plug 'simnalamburt/vim-mundo' , Cond(!exists('g:vscode'))
+Plug 'SirVer/ultisnips'       , Cond(!exists('g:vscode')) "Snippet engine
+Plug 'honza/vim-snippets'     , Cond(!exists('g:vscode')) "Common snippets
+Plug 'junegunn/goyo.vim'      , Cond(!exists('g:vscode')) "Zen-mode
+Plug 'Shougo/deoplete.nvim'   , Cond(!exists('g:vscode'), { 'do': ':UpdateRemotePlugins' }) "TODO migrate to ddc.vim?
+Plug 'sheerun/vim-polyglot'   , Cond(!exists('g:vscode')) "Language packs
+Plug 'ggandor/leap.nvim'      , "Super easy-motion
+Plug 'ggandor/flit.nvim'      , "Super sneak
+Plug 'haya14busa/is.vim'      , Cond(!exists('g:vscode'))
+Plug 'gbprod/substitute.nvim'
 
 " Plug 'liuchengxu/vim-which-key'
 
 call plug#end()
 
 "--------------------------- Standard settings ---------------------------
-
 "Search
-set nohlsearch "hlsearch   " highlight searches
 set incsearch  " show incremental results while typing
 set ignorecase " Use case insensitive search, except when using capital letters
 set smartcase
@@ -48,6 +48,7 @@ set undofile
 set tabstop=2    " size of a hard tabstop
 set expandtab    " Insert spaces instead of tab characters when tab is pressed
 set shiftwidth=4 " size of an 'indent'
+set autoindent
 
 " Modelines have historically been a source of security vulnerabilities. As
 " such, it may be a good idea to disable them and use the securemodelines
@@ -64,6 +65,8 @@ set wrap lbr
 
 let g:is_posix=1
 
+set clipboard+=unnamedplus
+
 "--------------------------- Mappings ---------------------------
 
 "Return to normal mode
@@ -79,30 +82,11 @@ map <leader>fed :e $MYVIMRC<cr>
 map Y y$
 
 " Avoid duplicate functionality/make behave like atom
-nmap cc ciw
+" nmap cc ciw
 
 "Toggle spell check on and off
 nmap <silent> <leader>s :set spell!<CR>
 set spelllang=en_us "Spell check language is English(US)
-
-"Leap
-lua require('leap')
-lua vim.keymap.set({'n', 'x', 'o'}, 'm', '<Plug>(leap-forward-to)')
-lua vim.keymap.set({'n', 'x', 'o'}, 'M', '<Plug>(leap-backward-to)')
-lua vim.keymap.set({'n', 'x', 'o'}, 'gs', '<Plug>(leap-cross-window)')
-
-"Flit
-lua <<EOF
-require('flit').setup {
-  keys = { f = 'f', F = 'F', t = 't', T = 'T' },
-  -- A string like "nv", "nvo", "o", etc.
-  labeled_modes = "v",
-  multiline = true,
-  -- Liku `leap`s similar argument (call-specific overrides).
-  -- E.g.: opts = { equivalence_classes = {} }
-  opts = {}
-}
-EOF
 
 "Tabular
 let g:haskell_tabular = 1
@@ -111,15 +95,12 @@ vmap a;   :Tabularize /::<CR>
 vmap a-   :Tabularize /-><CR>
 vmap a#   :Tabularize /#<CR>
 vmap a"   :Tabularize /"<CR>
+vmap a\   :Tabularize /\|<CR>
 vmap <CR> :Tabularize /
 
 "Gundo
 let g:mundo_prefer_python3 = 1
 nnoremap <leader>u :MundoToggle<CR>
-
-"Multiple-cursors THESE WILL NOT WORK UNTIL THE PACKAGE IS UPDATED
-"let g:multi_cursor_quit_key='fd'
-"let g:multi_cursor_insert_maps = {'f':1}
 
 " Easily switch buffers, switch windows & generate new splits
 nmap [b :bp<CR>
@@ -172,8 +153,6 @@ nmap ]<Space> <Plug>BlankDown
 " colorscheme PaperColor
 " set background=dark
 
-
-
 "--------------------------- Plugin options ---------------------------
 
 let g:ycm_python_binary_path = '/usr/local/bin/python3'
@@ -193,10 +172,7 @@ inoremap <silent><expr><s-tab> pumvisible() ? "\<c-p>" : "\<s-tab>"
 "--------------------------- Autocommands ---------------------------
 
 "Source .vimrc on write
-augroup reload_vimrc
-  autocmd!
-    autocmd BufWritePost $MYVIMRC source $MYVIMRC | echom "Reloaded " . $MYVIMRC
-augroup END
+au BufWritePost ~/.config/nvim/*.{vim,lua} so $MYVIMRC
 
 "Make :q quit in Goyo
 function! s:goyo_enter()
@@ -223,16 +199,31 @@ autocmd! User GoyoLeave call <SID>goyo_leave()
 "Start terminal in insert mode
 autocmd BufEnter term://* startinsert
 
+:set number relativenumber
 
-" :set number relativenumber
-
-" :augroup numbertoggle
-" :  autocmd!
-" :  autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
-" :  autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
-" :augroup END
+augroup numbertoggle
+  autocmd!
+  autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
+  autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
+augroup END
 
 let g:python3_host_prog='/Users/stephen/.pyenv/shims/python3'
 
-"--------------------------- Testing ---------------------------
+lua << EOF
+-- Leap
+require('leap')
+vim.keymap.set({'n', 'x', 'o'}, 's', '<Plug>(leap-forward-to)')
+vim.keymap.set({'n', 'x', 'o'}, 'S', '<Plug>(leap-backward-to)')
+vim.keymap.set({'n', 'x', 'o'}, 'gs', '<Plug>(leap-cross-window)')
 
+-- Flit
+require('flit').setup {
+  keys = { f = 'f', F = 'F', t = 't', T = 'T' },
+  -- A string like "nv", "nvo", "o", etc.
+  labeled_modes = "v",
+  multiline = true,
+  -- Liku `leap`s similar argument (call-specific overrides).
+  -- E.g.: opts = { equivalence_classes = {} }
+  opts = {}
+}
+EOF
