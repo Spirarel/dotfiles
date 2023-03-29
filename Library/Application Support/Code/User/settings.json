@@ -1,272 +1,4 @@
 {
-  "vim.easymotion": false,
-  "vim.surround": true,
-  "vim.incsearch": true,
-  "vim.useSystemClipboard": true,
-  "vim.useCtrlKeys": true,
-  "vim.hlsearch": true,
-  "vim.insertModeKeyBindings": [
-    {
-      "before": [
-        "f",
-        "d"
-      ],
-      "after": [
-        "<Esc>"
-      ]
-    }
-  ],
-  "vim.visualModeKeyBindings": [
-    {
-      "before": [
-        "f",
-        "d"
-      ],
-      "after": [
-        "<Esc>"
-      ]
-    },
-    {
-      "before": [
-        "<Enter>"
-      ],
-      "commands": [
-        "align.by.regex"
-      ]
-    },
-    {
-      "before": [
-        "a",
-        "a"
-      ],
-      "commands": [
-        "wwm.aligncode"
-      ],
-      "when": "editorTextFocus && !editorReadonly"
-    },
-    {
-      "before": [
-        "'"
-      ],
-      "after": [
-        "S",
-        "'"
-      ],
-      "when": "editorTextFocus && !editorReadonly"
-    },
-    {
-      "before": [
-        "\""
-      ],
-      "after": [
-        "S",
-        "\""
-      ],
-      "when": "editorTextFocus && !editorReadonly"
-    },
-    { // Sneak
-      "before": [
-        "m"
-      ],
-      "after": [
-        "s"
-      ]
-    },
-    { // Broken
-      "before": [
-        "M"
-      ],
-      "after": [
-        "S"
-      ]
-    },
-  ],
-  "vim.visualModeKeyBindingsNonRecursive": [
-    {
-      "before": [
-        ">"
-      ],
-      "commands": [
-        "editor.action.indentLines"
-      ]
-    },
-    {
-      "before": [
-        "<"
-      ],
-      "commands": [
-        "editor.action.outdentLines"
-      ]
-    },
-    {
-      "before": [
-        "f"
-      ],
-      "after": [
-        "s"
-      ]
-    },
-    { // Currently broken
-      "before": [
-        "F"
-      ],
-      "after": [
-        "S"
-      ]
-    },
-    {
-      "before": [
-        "*"
-      ],
-      "after": [
-        "S",
-        "*"
-      ],
-    }
-  ],
-  "vim.normalModeKeyBindings": [
-    {
-      "before": [
-        "Y"
-      ],
-      "after": [
-        "y",
-        "$"
-      ]
-    },
-    {
-      "before": [
-        "c",
-        "c"
-      ],
-      "after": [
-        "c",
-        "i",
-        "w"
-      ]
-    },
-    {
-      "before": [
-        "<leader>",
-        "<enter>"
-      ],
-      "commands": [
-        "workbench.action.toggleZenMode"
-      ]
-    },
-    {
-      "before": [
-        "<leader>",
-        "a"
-      ],
-      "commands": [
-        "wwm.aligncode"
-      ],
-      "when": "editorTextFocus && !editorReadonly"
-    },
-    {
-      "before": [
-        "<leader>",
-        "f",
-        "e",
-        "d"
-      ],
-      "commands": [
-        "workbench.action.openSettingsJson"
-      ]
-    },
-    {
-      "before": [
-        "<leader>",
-        "s",
-        "8"
-      ],
-      "after": [
-        "y",
-        "s",
-        "i",
-        "w",
-        "*"
-      ]
-    }
-  ],
-  "vim.normalModeKeyBindingsNonRecursive": [
-    {
-      "before": [
-        "<C-h>"
-      ],
-      "after": [
-        "<C-w>",
-        "h"
-      ]
-    },
-    {
-      "before": [
-        "<C-j>"
-      ],
-      "after": [
-        "<C-w>",
-        "j"
-      ]
-    },
-    {
-      "before": [
-        "<C-l>"
-      ],
-      "after": [
-        "<C-w>",
-        "l"
-      ]
-    },
-    {
-      "before": [
-        "<C-k>"
-      ],
-      "after": [
-        "<C-w>",
-        "k"
-      ]
-    },
-    { // Sneak
-      "before": [
-        "s"
-      ],
-      "after": [
-        "c",
-        "l"
-      ]
-    },
-    {
-      "before": [
-        "S"
-      ],
-      "after": [
-        "c",
-        "c"
-      ]
-    },
-    {
-      "before": [
-        "m"
-      ],
-      "after": [
-        "s"
-      ]
-    },
-    {
-      "before": [
-        "M"
-      ],
-      "after": [
-        "S"
-      ]
-    },
-  ],
-  "vim.leader": "<space>",
-  "vim.handleKeys": {
-    "<C-a>": false,
-    "<C-f>": false
-  },
   "python.venvPath": "~/.virtualenvs",
   "[html]": {
     "editor.tabSize": 2,
@@ -274,37 +6,17 @@
   "editor.tabCompletion": "on",
   "zenMode.fullScreen": false,
   "keyboard.dispatch": "keyCode",
-  "alignment.surroundSpace": {
-    "colon": [
-      1,
-      1
-    ],
-    "assignment": [
-      1,
-      1
-    ],
-    "arrow": [
-      1,
-      1
-    ],
-    "comment": 2
-  },
   "editor.minimap.enabled": false,
   "julia.enableTelemetry": false,
   "markdown.preview.breaks": true,
   "python.linting.pylintEnabled": true,
   "python.linting.enabled": false,
-  "vim.highlightedyank.enable": true,
-  "vim.sneak": true,
-  "vim.sneakReplacesF": false,
-  "vim.sneakUseIgnorecaseAndSmartcase": true,
   "editor.renderWhitespace": "none",
   "julia.execution.resultType": "both",
   "terminal.integrated.commandsToSkipShell": [
     "language-julia.interrupt"
   ],
   "jupyter.askForKernelRestart": false,
-  "jupyter.interactiveWindowMode": "perFile",
   "workbench.iconTheme": "vscode-icons",
   "[plaintext]": {
     "editor.wordBasedSuggestions": false
@@ -323,8 +35,7 @@
   "breadcrumbs.enabled": false,
   "julia.NumThreads": "auto",
   "svelte.enable-ts-plugin": true,
-  "svelte.plugin.svelte.note-new-transformation": false,
-  "workbench.colorTheme": "Default Dark+ Experimental",
+  "workbench.colorTheme": "Horizon Bright Bold",
   "[python]": {
     "editor.defaultFormatter": null,
     "editor.codeActionsOnSave": {
@@ -332,7 +43,17 @@
     },
     "editor.formatOnType": true
   },
-  "vscode-neovim.neovimExecutablePaths.darwin": "/usr/local/bin/nvim",
   "editor.formatOnSave": true,
-  "workbench.editor.enablePreviewFromCodeNavigation": true
+  "workbench.editor.enablePreviewFromCodeNavigation": true,
+  "terminal.external.osxExec": "alacritty.app",
+  "extensions.experimental.affinity": {
+    "asvetliakov.vscode-neovim": 1
+  },
+  "explorer.confirmDragAndDrop": false,
+  "workbench.tree.indent": 12,
+  "jupyter.interactiveWindow.creationMode": "perFile",
+  "haskell.manageHLS": "GHCup",
+  "editor.fontLigatures": true,
+  "editor.fontFamily": "'JETBRAINS MONO', Monaco, 'Courier New', monospace",
+  "clipring.maxRingItems": 3
 }
