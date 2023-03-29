@@ -11,8 +11,8 @@ fi
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-#ZSH_THEME="robbyrussell"
-ZSH_THEME="fletcherm"
+ZSH_THEME="robbyrussell"
+#ZSH_THEME="fletcherm"
 # ZSH_THEME="random"
 
 # Uncomment the following line to use case-sensitive completion.
@@ -82,6 +82,11 @@ fi
 # ssh
 # export SSH_KEY_PATH="~/.ssh/dsa_id"
 
+trash() {
+    mv $1 ~/.trash
+    echo "Moved $1 to trash"
+}
+
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
@@ -93,7 +98,6 @@ fi
 alias py="python3"
 alias l="ls -A"
 alias nv="nvim"
-alias ghci="stack exec -- ghci"
 alias lg="ls | grep"
 alias mute="sh ~/code/scripts/SpoMutify.sh > /dev/null 2>&1 &"
 alias journal="nv ~/Desktop/journal.md"
@@ -106,6 +110,7 @@ brew upgrade
 defaults import com.apple.dock ~/temp_dock
 rm ~/temp_dock
 killall Dock"
+alias ctl="TEST_LOG=true cargo test | bunyan" # cargo test "logging"
 
 export JULIA_NUM_THREADS="auto"
 ##Conditional alias based on current OS
@@ -137,3 +142,5 @@ end"'
 # add_fn() {
 #   echo $1() { $2 } >> ~/.zshrc
 # }
+
+[ -f "/Users/stephen/.ghcup/env" ] && source "/Users/stephen/.ghcup/env" # ghcup-env
