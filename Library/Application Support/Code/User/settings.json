@@ -35,7 +35,7 @@
   "breadcrumbs.enabled": false,
   "julia.NumThreads": "auto",
   "svelte.enable-ts-plugin": true,
-  "workbench.colorTheme": "Horizon Bright Bold",
+  "workbench.colorTheme": "Default Dark+ Experimental",
   "[python]": {
     "editor.defaultFormatter": null,
     "editor.codeActionsOnSave": {
