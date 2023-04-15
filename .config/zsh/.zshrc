@@ -1,7 +1,5 @@
 #!/bin/zsh
 
-# setopt SHARE_HISTORY
-
 # Preferred editor for local and remote sessions
 if [[ -n $SSH_CONNECTION ]]; then
   export EDITOR='vim'
@@ -22,5 +20,6 @@ trash() {
 source ${ZDOTDIR:-~}/.antidote/antidote.zsh
 antidote load
 
-# Autojump
-[ -f /usr/local/etc/profile.d/autojump.sh ] && . /usr/local/etc/profile.d/autojump.sh
+eval "$(zoxide init --cmd j zsh)"
+
+echo "Remember to use autojump and up!"

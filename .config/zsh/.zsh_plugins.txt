@@ -2,7 +2,6 @@
 
 mattmc3/zephyr path:plugins/directory
 mattmc3/zephyr path:plugins/editor
-mattmc3/zephyr path:plugins/history
 mattmc3/zephyr path:plugins/completion
 mattmc3/zephyr path:plugins/color
 mattmc3/zephyr path:plugins/macos
@@ -15,12 +14,11 @@ mattmc3/zephyr path:plugins/macos
 ###
 peterhurford/up.zsh
 mdumitru/git-aliases
-# wting/autojump
+spaceship-prompt/spaceship-prompt
 
 $ZDOTDIR/.aliases
 
 romkatv/powerlevel10k kind:fpath
-sindresorhus/pure
 
 ### Framework: Oh-My-Zsh
 #

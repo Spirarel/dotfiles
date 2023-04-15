@@ -82,7 +82,7 @@ map <leader>fed :e $MYVIMRC<cr>
 map Y y$
 
 " Avoid duplicate functionality/make behave like atom
-" nmap cc ciw
+nmap cc ciw
 
 "Toggle spell check on and off
 nmap <silent> <leader>s :set spell!<CR>
@@ -155,9 +155,6 @@ nmap ]<Space> <Plug>BlankDown
 
 "--------------------------- Plugin options ---------------------------
 
-let g:ycm_python_binary_path = '/usr/local/bin/python3'
-let g:ycm_autoclose_preview_window_after_completion=1
-
 let g:UltiSnipsExpandTrigger="<C-j>"
 let g:UltiSnipsJumpForwardTrigger="<CR>"
 let g:UltiSnipsJumpBackwardTrigger="<C-k>"
@@ -207,14 +204,12 @@ augroup numbertoggle
   autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
 augroup END
 
-let g:python3_host_prog='/Users/stephen/.pyenv/shims/python3'
-
 lua << EOF
 -- Leap
 require('leap')
-vim.keymap.set({'n', 'x', 'o'}, 's', '<Plug>(leap-forward-to)')
-vim.keymap.set({'n', 'x', 'o'}, 'S', '<Plug>(leap-backward-to)')
-vim.keymap.set({'n', 'x', 'o'}, 'gs', '<Plug>(leap-cross-window)')
+vim.keymap.set({'n', 'x', 'o'}, 'm', '<Plug>(leap-forward-to)')
+vim.keymap.set({'n', 'x', 'o'}, 'M', '<Plug>(leap-backward-to)')
+vim.keymap.set({'n', 'x', 'o'}, 'gm', '<Plug>(leap-cross-window)')
 
 -- Flit
 require('flit').setup {
