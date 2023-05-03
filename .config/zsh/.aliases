@@ -22,6 +22,7 @@ alias ll='ls -lh'
 
 # misc
 alias zdot='cd ${ZDOTDIR:-~}'
-alias zrc="nv /Users/stephen/.config/zsh/.zshrc"
-alias ali="nv + /Users/stephen/.config/zsh/.aliases"
+alias zrc="nv $ZDOTDIR/.zshrc"
+alias ali="nv + $ZDOTDIR/.aliases"
 alias src="source $ZDOTDIR/.zshrc"
+alias h="history 1"

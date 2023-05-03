@@ -1,3 +1,3 @@
 ZDOTDIR=$HOME/.config/zsh
 . "$HOME/.cargo/env"
-export HOMEBREW_AUTOREMOVE=1
+PATH="/opt/homebrew/opt/libpq/bin:$PATH"

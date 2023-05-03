@@ -2,6 +2,7 @@
 
 mattmc3/zephyr path:plugins/directory
 mattmc3/zephyr path:plugins/editor
+mattmc3/zephyr path:plugins/history
 mattmc3/zephyr path:plugins/completion
 mattmc3/zephyr path:plugins/color
 mattmc3/zephyr path:plugins/macos
@@ -35,7 +36,6 @@ romkatv/powerlevel10k kind:fpath
 #
 ####
 ohmyzsh/ohmyzsh path:lib/clipboard.zsh
-ohmyzsh/ohmyzsh path:plugins/copybuffer
 ohmyzsh/ohmyzsh path:plugins/copyfile
 ohmyzsh/ohmyzsh path:plugins/copypath
 ohmyzsh/ohmyzsh path:plugins/extract

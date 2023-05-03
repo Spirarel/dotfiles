@@ -19,8 +19,8 @@ call plug#begin()
 Plug 'mg979/vim-visual-multi', Cond(!exists('g:vscode')) "Newcomer
 Plug 'godlygeek/tabular'
 Plug 'tpope/vim-surround'
-Plug 'tpope/vim-commentary'   , Cond(!exists('g:vscode'))
-Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-commentary'   , Cond(!exists('g:vscode')) "Commenting
+Plug 'tpope/vim-repeat' "Augmented dot repeat
 Plug 'simnalamburt/vim-mundo' , Cond(!exists('g:vscode'))
 Plug 'SirVer/ultisnips'       , Cond(!exists('g:vscode')) "Snippet engine
 Plug 'honza/vim-snippets'     , Cond(!exists('g:vscode')) "Common snippets
@@ -30,7 +30,7 @@ Plug 'sheerun/vim-polyglot'   , Cond(!exists('g:vscode')) "Language packs
 Plug 'ggandor/leap.nvim'      , "Super easy-motion
 Plug 'ggandor/flit.nvim'      , "Super sneak
 Plug 'haya14busa/is.vim'      , Cond(!exists('g:vscode'))
-Plug 'gbprod/substitute.nvim'
+" Plug 'gbprod/substitute.nvim'
 
 " Plug 'liuchengxu/vim-which-key'
 
@@ -72,6 +72,13 @@ set clipboard+=unnamedplus
 "Return to normal mode
 imap fd <ESC>
 vmap fd <ESC>
+
+" Remap to navigate by display lines
+nnoremap j gj
+nnoremap gj j
+nnoremap k gk
+nnoremap gk k
+
 
 let mapleader = "\<space>"
 
@@ -222,3 +229,5 @@ require('flit').setup {
   opts = {}
 }
 EOF
+" -- Substitute
+" vim.keymap.set("n", "co", require('substitute.range').word, { noremap = true })
