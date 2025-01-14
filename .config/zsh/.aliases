@@ -6,9 +6,9 @@ alias nv="nvim"
 alias lg="ls | grep"
 alias ds="docker ps -q | xargs docker stop"
 alias bup="
-touch ~/temp_dock
-defaults export com.apple.dock ~/temp_dock
+touch ~/temp_dock defaults export com.apple.dock ~/temp_dock
 brew upgrade
+antidote-update
 defaults import com.apple.dock ~/temp_dock
 rm ~/temp_dock
 killall Dock"
@@ -26,3 +26,5 @@ alias zrc="nv $ZDOTDIR/.zshrc"
 alias ali="nv + $ZDOTDIR/.aliases"
 alias src="source $ZDOTDIR/.zshrc"
 alias h="history 1"
+alias rust="cd ~/code/rust_sandbox/src; nv main.rs"
+alias ..="cd .."

@@ -8,6 +8,8 @@
 "
 "--------------------------- Package manager ---------------------------
 
+" let g:python3_host_prog = '/Users/stephen/.pyenv/shims/python3'
+
 " Conditionally, lazy-load plugins
 function! Cond(Cond, ...)
   let opts = get(a:000, 0, {})
@@ -25,7 +27,10 @@ Plug 'simnalamburt/vim-mundo' , Cond(!exists('g:vscode'))
 Plug 'SirVer/ultisnips'       , Cond(!exists('g:vscode')) "Snippet engine
 Plug 'honza/vim-snippets'     , Cond(!exists('g:vscode')) "Common snippets
 Plug 'junegunn/goyo.vim'      , Cond(!exists('g:vscode')) "Zen-mode
-Plug 'Shougo/deoplete.nvim'   , Cond(!exists('g:vscode'), { 'do': ':UpdateRemotePlugins' }) "TODO migrate to ddc.vim?
+
+Plug 'ms-jpq/coq_nvim', Cond(!exists('g:vscode'), {'branch': 'coq'}) "Autocomplete
+Plug 'ms-jpq/coq.artifacts', Cond(!exists('g:vscode'), {'branch': 'artifacts'})
+
 Plug 'sheerun/vim-polyglot'   , Cond(!exists('g:vscode')) "Language packs
 Plug 'ggandor/leap.nvim'      , "Super easy-motion
 Plug 'ggandor/flit.nvim'      , "Super sneak

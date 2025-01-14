@@ -13,6 +13,8 @@ trash() {
     echo "Moved $1 to trash"
 }
 
+function add(){ $HOME/code/scripts/add $@ ;}
+
 # Source zstyles you might use with antidote.
 [[ -e ${ZDOTDIR:-~}/.zstyles ]] && source ${ZDOTDIR:-~}/.zstyles
 
@@ -22,4 +24,13 @@ antidote load
 
 eval "$(zoxide init --cmd j zsh)"
 
-echo "Remember to use autojump and up!"
+# pyenv
+export PYENV_ROOT="$HOME/.pyenv"
+command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
+
+export PATH="$HOME/fvm/versions/stable/bin:$PATH"
+
+# SDKMAN!
+export SDKMAN_DIR=$(brew --prefix sdkman-cli)/libexec
+[[ -s "${SDKMAN_DIR}/bin/sdkman-init.sh" ]] && source "${SDKMAN_DIR}/bin/sdkman-init.sh"
