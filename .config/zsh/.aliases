@@ -6,12 +6,9 @@ alias nv="nvim"
 alias lg="ls | grep"
 alias ds="docker ps -q | xargs docker stop"
 alias bup="
-touch ~/temp_dock defaults export com.apple.dock ~/temp_dock
 brew upgrade
 antidote-update
-defaults import com.apple.dock ~/temp_dock
-rm ~/temp_dock
-killall Dock"
+"
 alias ctl="TEST_LOG=true cargo test | bunyan" # cargo test "logging"
 alias cfg='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 

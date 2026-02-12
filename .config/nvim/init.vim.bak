@@ -8,7 +8,6 @@
 "
 "--------------------------- Package manager ---------------------------
 
-" let g:python3_host_prog = '/Users/stephen/.pyenv/shims/python3'
 
 " Conditionally, lazy-load plugins
 function! Cond(Cond, ...)
@@ -35,9 +34,6 @@ Plug 'sheerun/vim-polyglot'   , Cond(!exists('g:vscode')) "Language packs
 Plug 'ggandor/leap.nvim'      , "Super easy-motion
 Plug 'ggandor/flit.nvim'      , "Super sneak
 Plug 'haya14busa/is.vim'      , Cond(!exists('g:vscode'))
-" Plug 'gbprod/substitute.nvim'
-
-" Plug 'liuchengxu/vim-which-key'
 
 call plug#end()
 
