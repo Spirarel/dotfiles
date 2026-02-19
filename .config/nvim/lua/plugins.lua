@@ -72,11 +72,20 @@ require("lazy").setup({
             },
         },
     },
-    { "L3MON4D3/LuaSnip",       version = "v2.*" },
+    {
+        "L3MON4D3/LuaSnip",
+        version = "v2.*",
+        config = function()
+            -- This line is key: it tells LuaSnip where your custom files are
+            require("luasnip.loaders.from_lua").lazy_load({
+                paths = { "~/.config/nvim/lua/snippets/" }
+            })
+        end,
+    },
 
     -- 5. EDITING UTILS (Including Tabular)
     { 'mg979/vim-visual-multi', cond = not is_vscode },
-    { 'godlygeek/tabular' }, -- Kept per your request
+    { 'godlygeek/tabular' },
     { 'tpope/vim-repeat' },
     {
         "kylechui/nvim-surround",

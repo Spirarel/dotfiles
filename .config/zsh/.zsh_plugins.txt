@@ -1,5 +1,9 @@
-#!/bin/zsh
+# 1. Load FPATH/Function extensions first
+zsh-users/zsh-completions path:src kind:fpath
+# Only keep P10k if you actually use it; otherwise, delete this line.
+# romkatv/powerlevel10k kind:fpath 
 
+# 2. Zephyr Core (High quality, keep these)
 mattmc3/zephyr path:plugins/directory
 mattmc3/zephyr path:plugins/editor
 mattmc3/zephyr path:plugins/history
@@ -7,34 +11,15 @@ mattmc3/zephyr path:plugins/completion
 mattmc3/zephyr path:plugins/color
 mattmc3/zephyr path:plugins/macos
 
-### Regular Plugins
-#
-# Plugins are the simplest kind of bundles. You can point to a full git URL, or if you
-# assume GitHub.com, then you can use the user/repo shorthand.
-#
-###
-peterhurford/up.zsh
-mdumitru/git-aliases
+# 3. Prompt (Move up so it can start its async worker early)
 spaceship-prompt/spaceship-prompt
 
+# 4. Utilities & Aliases
+peterhurford/up.zsh
+mdumitru/git-aliases
 $ZDOTDIR/.aliases
 
-romkatv/powerlevel10k kind:fpath
-
-### Framework: Oh-My-Zsh
-#
-# Oh-My-Zsh is a very popular Zsh framework. You might choose to use plugins from OMZ
-# in your own config. Depending on which plugins you use, you may also need to include
-# OMZ's entire "lib" directory. If you do this, be careful - "lib" configures a lot of
-# very broad settings. If you are familiar with what you are doing, you may choose to
-# only include parts of "lib".
-#
-#   # use all of lib
-#   ohmyzsh/ohmyzsh path:lib
-#   # -OR-, only use only the specific files we care about
-#   ohmyzsh/ohmyzsh path:lib/clipboard.zsh
-#
-####
+# 5. OMZ Plugins (Lightweight)
 ohmyzsh/ohmyzsh path:lib/clipboard.zsh
 ohmyzsh/ohmyzsh path:plugins/copyfile
 ohmyzsh/ohmyzsh path:plugins/copypath
@@ -42,9 +27,8 @@ ohmyzsh/ohmyzsh path:plugins/extract
 ohmyzsh/ohmyzsh path:plugins/magic-enter
 ohmyzsh/ohmyzsh path:plugins/fancy-ctrl-z
 
+# 6. Heavy Plugins (DEFER THESE)
+# This ensures the prompt appears before these heavy scripts finish processing
 zdharma-continuum/fast-syntax-highlighting kind:defer
-
-zsh-users/zsh-completions path:src kind:fpath
-
 zsh-users/zsh-autosuggestions kind:defer
-zsh-users/zsh-history-substring-search
+zsh-users/zsh-history-substring-search kind:defer
