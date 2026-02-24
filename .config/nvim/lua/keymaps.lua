@@ -1,7 +1,7 @@
 local key = vim.keymap
 
 -- Normal mode escapes
-key.set({'i', 'v', 't'}, 'fd', '<Esc>')
+key.set({ 'i', 'v', 't' }, 'fd', '<Esc>')
 
 -- Display line navigation
 key.set('n', 'j', 'gj')
@@ -36,3 +36,11 @@ key.set('n', '<leader>wj', ':below sbn<CR>:wincmd j<CR>')
 
 -- Terminal Escape
 key.set('t', 'fd', [[<C-\><C-n>]])
+
+vim.keymap.set("n", "<leader>h", "<cmd>Dashboard<cr>", { desc = "Go to Dashboard" })
+
+-- Remove search highlights with ESC
+vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
+
+-- undo tree
+vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle)

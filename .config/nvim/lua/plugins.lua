@@ -1,5 +1,6 @@
 local is_vscode = vim.g.vscode ~= nil
 
+
 require("lazy").setup({
     -- 1. THE AUTOMATORS (Mason)
     -- Automatically installs Ruff, Stylua, Prettier, etc.
@@ -54,7 +55,7 @@ require("lazy").setup({
         config = function()
             -- In the new version, it's often just 'nvim-treesitter' or 'nvim-treesitter.config'
             require("nvim-treesitter").setup({
-                ensure_installed = { "lua", "python", "javascript", "vimdoc" },
+                ensure_installed = { "lua", "python", "javascript", "vimdoc", "markdown", "markdown_inline" },
                 highlight = { enable = true },
             })
         end,
@@ -66,7 +67,62 @@ require("lazy").setup({
         version = '*',
         cond = not is_vscode,
         opts = {
-            keymap = { preset = 'default' },
+            keymap = {
+                preset = 'none',
+                ['<Tab>'] = {
+                    function(cmp)
+                        if cmp.is_visible() then
+                            return cmp.select_next()
+                        elseif cmp.snippet_active() then
+                            return cmp.snippet_forward()
+                        else
+                            return cmp.show()
+                        end
+                    end,
+                    -- Logic: Check if we are at the start of a line or after whitespace
+                    function(cmp)
+                        local col = vim.fn.col('.') - 1
+                        local line = vim.fn.getline('.')
+                        if col == 0 or line:sub(col, col):match('%s') then
+                            return false -- fallback to literal Tab/Spaces
+                        end
+                    end,
+                    'fallback'
+                },
+                ['<S-Tab>'] = { 'select_prev', 'snippet_backward', 'fallback' },
+
+                -- Enter specifically for snippets to jump into the first slot
+                ['<CR>'] = { 'accept', 'fallback' },
+
+                ['<C-space>'] = { 'show', 'show_documentation', 'hide_documentation' },
+                ['<C-e>'] = { 'hide' },
+            },
+
+            snippets = {
+                preset = 'luasnip',
+            },
+
+            completion = {
+                -- Disable ghost_text since we are using actual buffer text now
+                ghost_text = { enabled = false },
+
+                list = {
+                    selection = {
+                        preselect = false,
+                        -- This is the "Actual Text" magic:
+                        -- It inserts the selection into the buffer as you cycle.
+                        auto_insert = true,
+                    }
+                },
+
+                menu = {
+                    -- Optional: ensures the menu doesn't jump around while auto-inserting
+                    draw = {
+                        columns = { { "label", "label_description", gap = 1 }, { "kind_icon", "kind" } },
+                    }
+                }
+            },
+
             sources = {
                 default = { 'lsp', 'path', 'snippets', 'buffer' },
             },
@@ -76,7 +132,6 @@ require("lazy").setup({
         "L3MON4D3/LuaSnip",
         version = "v2.*",
         config = function()
-            -- This line is key: it tells LuaSnip where your custom files are
             require("luasnip.loaders.from_lua").lazy_load({
                 paths = { "~/.config/nvim/lua/snippets/" }
             })
@@ -201,5 +256,11 @@ require("lazy").setup({
             vim.keymap.set('n', '<leader>ff', builtin.find_files, { desc = 'Find Files' })
             vim.keymap.set('n', '<leader>fg', builtin.live_grep, { desc = 'Live Grep' })
         end
+    },
+    {
+        'MeanderingProgrammer/render-markdown.nvim',
+        dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' },
+        cond = not is_vscode,
+        opts = {},
     },
 })

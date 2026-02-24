@@ -35,6 +35,14 @@ vim.opt.signcolumn = "yes"
 -- Decrease update time for snappier diagnostic bubbles
 vim.opt.updatetime = 250
 
--- Configure the "Status Column" (Modern Neovim UI)
--- This keeps numbers and signs in a fixed, clean layout
--- vim.opt.statuscolumn = [[%!v:lua.require'snacks.statuscolumn'.get()]]
+vim.opt.conceallevel = 2     -- Hides the * and _ markers for a cleaner look
+vim.opt.concealcursor = "nc" -- Keeps things concealed in Normal and Command mode
+
+-- Set the width of the undotree window
+vim.g.undotree_SplitWidth = 40
+
+-- Set the height of the diff panel
+vim.g.undotree_DiffpanelHeight = 15
+
+-- Optional: Automatically focus the undotree window when opened
+vim.g.undotree_SetFocusWhenToggle = 1
